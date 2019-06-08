@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/' => "top#index"
+  root to: "top#index"
   devise_for :users
 
   resources :users, only: [:index, :show, :edit, :update, :destroy]

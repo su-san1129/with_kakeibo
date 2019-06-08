@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
 
 	  # ログアウト後に遷移するページ
 	  def after_sign_out_path_for(resource_or_root)
-	  	new_user_session_path
+	  	root_path
 	  end
 end
