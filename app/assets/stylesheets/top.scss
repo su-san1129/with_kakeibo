@@ -1,0 +1,11 @@
+// Place all the styles related to the top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-visual {
+	padding-top: 0px;
+	background: url(top_background_image.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+	height: 650px;
+}
