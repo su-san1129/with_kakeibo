@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_050744) do
+ActiveRecord::Schema.define(version: 2019_06_08_053104) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fixed_costs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "fixed_cost_price"
+    t.datetime "fixed_cost_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_fixed_costs_on_user_id"
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.datetime "payday"
+    t.integer "income"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +53,20 @@ ActiveRecord::Schema.define(version: 2019_06_05_050744) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "variable_costs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+    t.integer "price"
+    t.text "opinion"
+    t.text "cost_image_id"
+    t.datetime "payment_day"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_variable_costs_on_category_id"
+    t.index ["user_id"], name: "index_variable_costs_on_user_id"
   end
 
 end
