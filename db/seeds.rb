@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+user1 = User.create(
+	name: 'sample太郎',
+	introduction: 'サンプルです。家計簿頑張ります。',
+	password: 'password',
+	range: 6000000,
+	email: 'sample@sample.com'
+	)
+
+Category.create(category: '食費', user_id: user1.id)
+Category.create(category: '交通費', user_id: user1.id)
+Category.create(category: '通信費', user_id: user1.id)
+Category.create(category: '交際費', user_id: user1.id)
+Category.create(category: '教育費', user_id: user1.id)
+Category.create(category: '医療費', user_id: user1.id)
+

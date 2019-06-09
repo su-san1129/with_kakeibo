@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*　main-visualのCSS　*/
+
 .main-visual {
 	padding-top: 0px;
 	background: url(top_background_image.jpg);
@@ -46,4 +48,21 @@
 }
 .button-7:hover a{
   color:#fff;
+}
+
+/*　about-contentのCSS　*/
+
+.about-title {
+  position: relative;
+}
+
+.about-title:after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background: -webkit-repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
+  background: repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
 }
