@@ -13,15 +13,15 @@ class VariableCostsController < ApplicationController
 		@variable_cost = VariableCost.new(variable_cost_params)
 
 		respond_to do |format|
-    if @variable_cost.save
-      format.html { redirect_to @variable_cost, notice: '入力が完了しました！' }
-      format.json { render :show, status: :created, location: @variable_cost }
-    else
-      format.html { render :new }
-      format.json { render json: @variable_cost.errors, status: :unprocessable_entity }
-    end
+	    if @variable_cost.save
+	      format.html { redirect_to user_path(current_user.id), notice: '入力が完了しました！' }
+	      # format.json { render :show, status: :created, location: @variable_cost }
+	    else
+	      format.html { render "users/index" }
+	      # format.json { render json: @variable_cost.errors, status: :unprocessable_entity }
+	    end
+	  end
   end
-	end
 
 	def edit
 	end
@@ -32,18 +32,19 @@ class VariableCostsController < ApplicationController
 	def destroy
 	end
 
-private
-    def variable_cost_params
-  	 params.require(:variable_cost)permit(
-  	 	:user_id,
-  	 	:category_id,
-  	 	:price,
-  	 	:opinion,
-  	 	:cost_image,
-  	 	:payment_day,
-  	 	:title
-  	 	)
-    end
+	private
+
+		def variable_cost_params
+		 params.require(:variable_cost).permit(
+		 	:user_id,
+		 	:category_id,
+		 	:price,
+		 	:opinion,
+		 	:cost_image,
+		 	:payment_day,
+		 	:title
+		 	)
+		end
 
     def set_variable_cost
 			@variable = VariableCost.find(params[:id])
@@ -55,5 +56,4 @@ private
 	      redirect_to users_path
 	    end
 	  end
-
 end

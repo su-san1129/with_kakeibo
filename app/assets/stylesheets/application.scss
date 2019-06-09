@@ -15,6 +15,17 @@
  */
 @import "bootstrap";
 
+.new-registrations{
+    padding-top: 0px;
+    background: url(registration-form.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 550px;
+}
+
+.registrations-form{
+    background-color: rgba(255,255,255,0.5);
+}
 
 .box17{
     margin:2em 0;
