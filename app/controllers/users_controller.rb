@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@variable_cost = VariableCost.new
 	end
 
 	def edit
