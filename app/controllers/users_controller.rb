@@ -10,7 +10,10 @@ class UsersController < ApplicationController
 
 	def show
 		@variable_cost = VariableCost.new
+		@income = Income.new
 		@variable_costs = @user.variable_costs
+		@income_price = Income.find_by(id: current_user.id, created_at: Time.now.all_month)
+
 	end
 
 	def edit
