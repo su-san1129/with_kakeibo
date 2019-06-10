@@ -7,7 +7,7 @@ class IncomesController < ApplicationController
 			@income.update(income_params)
 		else
 			@income.save
-			redirect_to user_path
+			redirect_to user_path(current_user)
 		end
 	end
 		# if @income.save

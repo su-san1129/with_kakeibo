@@ -16,7 +16,6 @@
 		  			<div class="form-group">
 		  				<%= render 'variable_costs/new_form' %>
 		  			</div>
-		  			<div><%= render 'categories/category_modal' %></div>
 		  		</div>
 		  	</div>
 		  </div>
@@ -27,6 +26,18 @@
 	<div class="col-sm-6">
 
 		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<%= week_calendar events:@variable_costs do |date, variable_costs| %>
+					  <%= date %>
+					  <% variable_costs.each do |variable_cost| %>
+					    <div>
+					      <%= variable_cost.price %>
+					    </div>
+					  <% end %>
+					<% end %>
+				</div>
+			</div>
 			<div class="col-12">
 				<div class="card">
 					|<br>
@@ -92,6 +103,7 @@
 							<li class="list-group-item">通信費(6)</li>
 							<li class="list-group-item">交際費(1)</li>
 						</ul>
+						<div><%= render 'categories/category_modal' %></div>
 					</div>
 				</div>
 			</div>
