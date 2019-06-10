@@ -16,7 +16,6 @@
 		  			<div class="form-group">
 		  				<%= render 'variable_costs/new_form' %>
 		  			</div>
-		  			<div><%= render 'categories/category_modal' %></div>
 		  		</div>
 		  	</div>
 		  </div>
@@ -56,6 +55,7 @@
 									<li class="list-group-item">詳細：<%= v.opinion %></li>
 									<li class="list-group-item">支払日：<%= v.payment_day.strftime('%Y/%m/%d') %></li>
 								</ul>
+								<p><%= link_to "削除", variable_cost_path(v.id), method: :delete %></p>
 							</div>
 						</div>
 					</div>
@@ -66,12 +66,29 @@
 
 
 	<div class="col-sm-3">
+		<%= month_calendar events: @variable_costs do |date, variable_costs| %>
+		  <%= date.day %>
+		  <% sum = 0 %>
+			  <% variable_costs.each do |variable_cost| %>
+		    <div>
+		      <% sum = sum + variable_cost.price %>
+		    </div>
+			 <% end %>
+		  <% if sum != 0 %>
+			  <%= sum %>
+			<% end %>
+		<% end %>
 		<div class="container">
 			<div class="card">
 				<div class="card-body text-center">
 					<div><%= render 'incomes/new_modal' %></div>
-					<% if @income_price.present? %>
+					<% if @income_price.present? && balance_price < 0 %>
 						<div class="card-title">今月の給料</div>
+						<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+						<div class="card-title">今月の残額</div>
+						<h2 class="card-text">￥<span class="text-danger"><%= number_with_delimiter(balance_price) %></span></h2>
+					<% elsif @income_price.present? %>
+					<div class="card-title">今月の給料</div>
 						<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
 						<div class="card-title">今月の残額</div>
 						<div class="card-text">￥<%= number_with_delimiter(balance_price) %></div>
@@ -92,6 +109,7 @@
 							<li class="list-group-item">通信費(6)</li>
 							<li class="list-group-item">交際費(1)</li>
 						</ul>
+						<div><%= render 'categories/category_modal' %></div>
 					</div>
 				</div>
 			</div>

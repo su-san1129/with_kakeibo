@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :categories
   has_many :fixed_costs
   has_many :incomes
+
 end
