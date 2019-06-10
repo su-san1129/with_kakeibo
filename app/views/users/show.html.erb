@@ -6,9 +6,7 @@
 	        <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
 	        <h4 class="card-title"><%= current_user.name %></h4>
 	        <p class="card-text"><%= current_user.introduction %></p>
-	        <div class="btn btn-outline-dark">
-	        	<%= link_to "編集", edit_user_path(current_user) %>
-	        </div>
+	        <%= link_to "編集", edit_user_path(current_user), class: "btn btn-outline-dark" %>
 	      </div>
 		  </div>
 		  <div class="card mb-5">
