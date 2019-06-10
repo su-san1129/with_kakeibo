@@ -16,6 +16,7 @@
 		  			<div class="form-group">
 		  				<%= render 'variable_costs/new_form' %>
 		  			</div>
+		  			<div><%= render 'categories/category_modal' %></div>
 		  		</div>
 		  	</div>
 		  </div>
@@ -51,7 +52,7 @@
 							<div class="card-text">
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item">カテゴリー：<%= v.category.category %></li>
-									<li class="list-group-item">金額：<%= v.price %></li>
+									<li class="list-group-item">金額：￥<%= number_with_delimiter(v.price) %></li>
 									<li class="list-group-item">詳細：<%= v.opinion %></li>
 									<li class="list-group-item">支払日：<%= v.payment_day.strftime('%Y/%m/%d') %></li>
 								</ul>
@@ -70,15 +71,14 @@
 				<div class="card-body text-center">
 					<div><%= render 'incomes/new_modal' %></div>
 					<% if @income_price.present? %>
-					<div class="card-title">今月の給料</div>
-					<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+						<div class="card-title">今月の給料</div>
+						<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+						<div class="card-title">今月の残額</div>
+						<div class="card-text">￥<%= number_with_delimiter(balance_price) %></div>
 					<% else %>
-					<div class="card-title">今月の給料</div>
-					<div class="card-text">登録はまだありません。</div>
+						<div class="card-title">今月の給料</div>
+						<div class="card-text">登録はまだありません。</div>
 					<% end %>
-					<div class="card-title">今月の残額</div>
-					<div class="card-text">￥ <%= number_with_delimiter(balance_price) %> </div>
-
 				</div>
 			</div>
 

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 	def show
 		@variable_cost = VariableCost.new
 		@income = Income.new
+		@category = Category.new
 		@variable_costs = @user.variable_costs.order(created_at: :desc)
 		@income_price = Income.find_by(user_id: current_user.id, payday: Time.now.all_month)
 
