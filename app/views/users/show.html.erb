@@ -16,6 +16,7 @@
 		  			<div class="form-group">
 		  				<%= render 'variable_costs/new_form' %>
 		  			</div>
+		  			<div><%= render 'categories/category_modal' %></div>
 		  		</div>
 		  	</div>
 		  </div>
@@ -70,15 +71,14 @@
 				<div class="card-body text-center">
 					<div><%= render 'incomes/new_modal' %></div>
 					<% if @income_price.present? %>
-					<div class="card-title">今月の給料</div>
-					<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+						<div class="card-title">今月の給料</div>
+						<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+						<div class="card-title">今月の残額</div>
+						<div class="card-text">￥<%= number_with_delimiter(balance_price) %></div>
 					<% else %>
-					<div class="card-title">今月の給料</div>
-					<div class="card-text">登録はまだありません。</div>
+						<div class="card-title">今月の給料</div>
+						<div class="card-text">登録はまだありません。</div>
 					<% end %>
-					<div class="card-title">今月の残額</div>
-					<div class="card-text">￥ <%= number_with_delimiter(balance_price) %> </div>
-
 				</div>
 			</div>
 

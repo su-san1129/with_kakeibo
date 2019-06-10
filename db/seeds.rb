@@ -15,10 +15,10 @@ user1 = User.create(
 	email: 'sample@sample.com'
 	)
 
-Category.create(category: '食費', user_id: user1.id)
-Category.create(category: '交通費', user_id: user1.id)
-Category.create(category: '通信費', user_id: user1.id)
-Category.create(category: '交際費', user_id: user1.id)
-Category.create(category: '教育費', user_id: user1.id)
-Category.create(category: '医療費', user_id: user1.id)
+Category.create(category: '食費', user_id: user1.id, status: 1)
+Category.create(category: '交通費', user_id: user1.id, status: 1)
+Category.create(category: '通信費', user_id: user1.id, status: 1)
+Category.create(category: '交際費', user_id: user1.id, status: 1)
+Category.create(category: '教育費', user_id: user1.id, status: 1)
+Category.create(category: '医療費', user_id: user1.id, status: 1)
 
