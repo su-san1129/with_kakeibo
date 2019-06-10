@@ -16,3 +16,12 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+$(function(){
+	$(document).on('click', 'input[type=submit]', function(){
+		if ($('input[type=text]').val() == ''){
+			return false;
+		}
+	})
+})

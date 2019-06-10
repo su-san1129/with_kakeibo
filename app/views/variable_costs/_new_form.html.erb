@@ -1,4 +1,4 @@
-<%= form_for @variable_cost do |f| %>
+<%= form_for @variable_cost, remote: true do |f| %>
 	<%= f.label :title, "タイトル" %>
 	<%= f.text_field :title, class: "form-control" %>
 	<%= f.label :price, "使った金額" %>
