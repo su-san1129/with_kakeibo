@@ -26,7 +26,6 @@
 	<div class="col-sm-6">
 
 		<div class="row">
-			
 			<div class="col-12">
 				<div class="card">
 					|<br>
@@ -67,13 +66,17 @@
 
 
 	<div class="col-sm-3">
-		<%= month_calendar events:@variable_costs do |date, variable_costs| %>
+		<%= month_calendar events: @variable_costs do |date, variable_costs| %>
 		  <%= date.day %>
+		  <% sum = 0 %>
 			  <% variable_costs.each do |variable_cost| %>
 		    <div>
-		      <%= variable_cost.price %>
+		      <% sum = sum + variable_cost.price %>
 		    </div>
 			 <% end %>
+		  <% if sum != 0 %>
+			  <%= sum %>
+			<% end %>
 		<% end %>
 		<div class="container">
 			<div class="card">
