@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_user, only: [:show]
+	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	before_action :correct_user, only: [:edit, :update]
 
 
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 		@variable_cost = VariableCost.new
 		@income = Income.new
 		@variable_costs = @user.variable_costs
-		@income_price = Income.find_by(id: current_user.id, created_at: Time.now.all_month)
+		@income_price = Income.find_by(user_id: current_user.id, payday: Time.now.all_month)
 
 	end
 
@@ -20,6 +20,8 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		@user.update(user_params)
+		redirect_to user_path(current_user)
 	end
 
 	def destroy
