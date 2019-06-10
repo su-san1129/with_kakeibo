@@ -51,7 +51,7 @@
 							<div class="card-text">
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item">カテゴリー：<%= v.category.category %></li>
-									<li class="list-group-item">金額：<%= v.price %></li>
+									<li class="list-group-item">金額：￥<%= number_with_delimiter(v.price) %></li>
 									<li class="list-group-item">詳細：<%= v.opinion %></li>
 									<li class="list-group-item">支払日：<%= v.payment_day.strftime('%Y/%m/%d') %></li>
 								</ul>
