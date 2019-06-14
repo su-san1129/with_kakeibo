@@ -26,19 +26,22 @@
 	<div class="col-sm-6">
 
 		<div class="row">
+			<% if @chart_data.present? %>
 			<div class="col-12">
 				<div class="card">
-					|<br>
-					|<br>
-					|<br>
-					|<br>
-					ここに円グラフ。項目ごとの割合。<br>
-					|<br>
-					|<br>
-					|<br>
-					|<br>
+				<%= pie_chart @chart_data %>
 				</div>
 			</div>
+			<% else %>
+			<div class="col-12">
+				<div class="card chart-card">
+				<%= pie_chart ({"食費" => 10, "交通費" => 5, "通信費" => 3}) %>
+				</div>
+				<div class="chart-text">
+					<div class="chart-text-pdg">費用を追加するとグラフが表示されます。</div>
+				</div>
+			</div>
+			<% end %>
 			<div class="col-12 btn btn-outline-dark my-3">
 				支出一覧　(暫定)
 			</div>
