@@ -107,10 +107,11 @@
 					<div class="card-title">カテゴリー</div>
 					<div class="card-text">
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item">食費(12)</li>
-							<li class="list-group-item">交通費(5)</li>
-							<li class="list-group-item">通信費(6)</li>
-							<li class="list-group-item">交際費(1)</li>
+							<% @categories.each do |category,count| %>
+							<li class="list-group-item">
+								<%= category %>(<%= count %>)
+							</li>
+							<% end %>
 						</ul>
 						<div><%= render 'categories/category_modal' %></div>
 					</div>
