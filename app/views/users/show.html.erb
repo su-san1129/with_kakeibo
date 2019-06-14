@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="card mb-3">
 	      <div class="card-body text-center">
-	        <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+	        <p><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-img", fallback: "no_image.png" ,size: "100x100" %></p>
 	        <h4 class="card-title"><%= current_user.name %></h4>
 	        <p class="card-text"><%= current_user.introduction %></p>
 	        <%= link_to "編集", edit_user_path(current_user), class: "btn btn-outline-dark" %>

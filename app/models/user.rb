@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :fixed_costs
   has_many :incomes
 
+  attachment :profile_image
+
 end
