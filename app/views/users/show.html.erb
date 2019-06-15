@@ -1,37 +1,10 @@
-<div class="row mb-5">
+<div class="row user-backgroud mb-5">
 	<div class="col-sm-3">
 		<%= render 'profile_bar' %>
 	</div>
 
 
 	<div class="col-sm-6">
-		<div class="row">
-			<%= render 'simple_calendar/chart_data' %>
-		</div>
-		<div class="col-12 btn btn-outline-dark my-3">支出一覧　(暫定)</div>
-		<div class="row">
-			<% @variable_costs.each do |v| %>
-				<div class="col-sm-6">
-					<div class="card my-2">
-						<div class="card-body">
-							<div class="card-text">
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">カテゴリー：<%= v.category.category %></li>
-									<li class="list-group-item">金額：￥<%= number_with_delimiter(v.price) %></li>
-									<li class="list-group-item">詳細：<%= v.opinion %></li>
-									<li class="list-group-item">支払日：<%= v.payment_day.strftime('%Y/%m/%d') %></li>
-								</ul>
-								<p><%= link_to "削除", variable_cost_path(v.id), method: :delete %></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
-
-
-	<div class="col-sm-3">
 		<%= month_calendar events: @variable_costs do |date, variable_costs| %>
 		  <%= date.day %>
 		  <% sum = 0 %>
@@ -44,6 +17,34 @@
 			  <%= sum %>
 			<% end %>
 		<% end %>
+		<div class="col-12 btn btn-outline-dark my-3">支出一覧　(暫定)</div>
+		<div class="row">
+			<% @variable_costs.each do |v| %>
+				<div class="col-sm-6">
+					<%= link_to v, class: "variable-card-box" do %>
+					<div class="card variable-card my-2">
+						<div class="card-body">
+							<div class="card-text">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">カテゴリー：<%= v.category.category %></li>
+									<li class="list-group-item">金額：￥<%= number_with_delimiter(v.price) %></li>
+									<li class="list-group-item">詳細：<%= v.opinion %></li>
+									<li class="list-group-item">支払日：<%= v.payment_day.strftime('%Y/%m/%d') %></li>
+								</ul>
+								<%= link_to "削除", variable_cost_path(v.id), method: :delete, class:"btn btn-secondary btn-sm my-1" %></p>
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+
+	<div class="col-sm-3">
+			<%= render 'simple_calendar/chart_data' %>
 		<div class="container">
 			<div class="card">
 				<div class="card-body text-center">
@@ -82,6 +83,4 @@
 			</div>
 		</div>
 	</div>
-
-
 </div>

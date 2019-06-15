@@ -1,0 +1,20 @@
+<div class="row mb-5">
+	<div class="col-sm-3">
+		<%= render 'users/profile_bar' %>
+	</div>
+
+	<div class="col-sm-9">
+		<div class="container">
+			<div class="row">
+		    <div class="card img-thumbnail">
+		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 60, 60, class: "card-img-top img-fluid", fallback: "no_image.png" %>
+		      <div class="card-body px-2 py-3">
+		        <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
+		        <p class="card-text">内容：<%= @variable_cost.opinion %></p>
+		        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
+		      </div>
+		    </div>
+			</div>
+		</div>
+	</div>
+</div>
