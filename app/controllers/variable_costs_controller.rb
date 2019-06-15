@@ -7,7 +7,8 @@ class VariableCostsController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		@user = @variable_cost.user
+		@cost_comment = CostComment.new
 	end
 
 	def create
