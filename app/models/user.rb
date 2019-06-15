@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :fixed_costs, dependent: :destroy
   has_many :incomes, dependent: :destroy
   has_many :cost_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   attachment :profile_image
 

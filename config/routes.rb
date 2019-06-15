@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :variable_costs, only: [:index, :show, :edit, :create, :update, :destroy] do
   	resource :cost_comments, only: [:create, :destroy]
+  	resource :favorites, only: [:create, :destroy]
   end
   resources :categories, only: [:create, :update, :destroy]
   resources :incomes, only: [:create, :update, :destroy]
