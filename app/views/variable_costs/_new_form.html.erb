@@ -11,5 +11,9 @@
 	<%= f.date_select :payment_day, { default: Date.today }, class: "form-control bootstrap-date" %>
 	<%#= f.attachment_field :cost_image, class: "image", id: "file" %>
 	<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= f.fields_for :maps do |map_form| %>
+			<%= map_form.label :address %>
+	    <%= map_form.text_field :address %>
+	  <% end %>
 	<%= f.submit "投稿", class: "form-control" %>
 <% end %>

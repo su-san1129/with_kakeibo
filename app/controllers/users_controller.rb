@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 		@variable_costs = @user.variable_costs.order(created_at: :desc)
 		@income_price = Income.find_by(user_id: current_user.id, payday: Time.now.all_month)
 		@chart_data = @user.variable_costs.joins(:category).group("categories.category").sum(:price)
+		@map = @variable_cost.maps.build
 
 	end
 

@@ -1,3 +1,36 @@
+<script type="text/javascript">
+	function initMap(){
+
+		var test = {lat: <%= @map.latitude %>, lng: <%= @map.longitude %>};
+		var map = new google.maps.Map(document.getElementById('map'),{
+			center: test,
+			zoom: 15
+		});
+
+		var transitLayer = new google.maps.TransitLayer();
+		transitLayer.setMap(map);
+
+		var cotentString = '住所：<%= @map.address %>';
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+
+		var marker = new google.maps.Marker({
+			position:test,
+			map: map,
+			title: cotentString
+		});
+
+		marker.addListener('click', function(){
+			infowindow.open(map, marker);
+		});
+	}
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAF4muH1LNHjv2wMwCG0wZY4SjCBCZlWtk&callback=initMap">
+</script>
+
+
 <div class="row mb-5">
 	<div class="col-sm-3">
 		<%= render 'users/profile_bar' %>
@@ -58,6 +91,24 @@
 					  </ul>
 					 <!--  リストここまで -->
 		      </div>
+		    </div>
+		    <div class="card">
+		    	
+					<p id="notice"><%= notice %></p>
+					<p>
+					  <strong>Address:</strong>
+					  <%= @map.address %>
+					</p>
+					<p>
+					  <strong>Latitude:</strong>
+					  <%= @map.latitude %>
+					</p>
+					<p>
+					  <strong>Longitude:</strong>
+					  <%= @map.longitude %>
+					</p>
+					<div id="map"></div>
+					
 		    </div>
 			</div>
 		</div>

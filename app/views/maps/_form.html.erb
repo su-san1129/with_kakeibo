@@ -1,0 +1,11 @@
+<%= form_for [@variable_cost,@mapnew] do |form| %>
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

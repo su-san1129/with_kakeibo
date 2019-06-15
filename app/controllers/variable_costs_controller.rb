@@ -9,6 +9,7 @@ class VariableCostsController < ApplicationController
 	def show
 		@user = @variable_cost.user
 		@cost_comment = CostComment.new
+		@map = @variable_cost.maps.find_by(variable_cost_id: @variable_cost.id)
 	end
 
 	def create
@@ -46,7 +47,8 @@ class VariableCostsController < ApplicationController
 		 	:opinion,
 		 	:cost_image,
 		 	:payment_day,
-		 	:title
+		 	:title,
+		 	maps_attributes: [:id, :address, :latitude, :longitude, :_destroy]
 		 	)
 		end
 
