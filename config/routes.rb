@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:index, :show, :edit, :update, :destroy]
-  resources :variable_costs, only: [:index, :show, :edit, :create, :update, :destroy]
+  resources :variable_costs, only: [:index, :show, :edit, :create, :update, :destroy] do
+  	resource :cost_comments, only: [:create, :destroy]
+  end
   resources :categories, only: [:create, :update, :destroy]
   resources :incomes, only: [:create, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

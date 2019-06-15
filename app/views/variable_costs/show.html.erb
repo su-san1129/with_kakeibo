@@ -12,6 +12,29 @@
 		        <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
 		        <p class="card-text">内容：<%= @variable_cost.opinion %></p>
 		        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
+					  <i class="fa fa-comment-alt"></i>
+					  <a href="#comments"><%= @variable_cost.cost_comments.count %></a>
+					  <%= form_for [@variable_cost, @cost_comment] do |f| %>
+					    <div class="row">
+				        <div class="col-sm-12">
+				          <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+				        </div>
+					    </div>
+					    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+						<% end %>
+					  <ul class="list-group list-group-flush">
+					  	<% @variable_cost.cost_comments.each do |cost_comment| %>
+						  	<li class="list-group-item">
+						  		<div class="row">
+							  		<div class="col-3">画像</div>
+							  		<div class="col-9">
+							  			<h6><%= cost_comment.user.name %></h6>
+							  			<p><%= cost_comment.comment %></p>
+							  		</div>
+							  	</div>
+						  	</li>
+						  <% end %>
+					  </ul>
 		      </div>
 		    </div>
 			</div>
