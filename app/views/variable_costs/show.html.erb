@@ -1,13 +1,47 @@
+<script type="text/javascript">
+	function initMap() {
+
+    var gmap = {lat: <%= @variable_cost.latitude %>, lng: <%= @variable_cost.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: gmap,
+      zoom: 15
+    });
+
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @variable_cost.address %>';
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+        position:gmap,
+        map: map,
+        title: contentString
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
+	}
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
+</script>
+
+
 <div class="row mb-5">
 	<div class="col-sm-3">
 		<%= render 'users/profile_bar' %>
 	</div>
 
-	<div class="col-sm-9">
+	<div class="col-sm-5">
 		<div class="container">
 			<div class="row">
 		    <div class="card img-thumbnail">
-		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 60, 60, class: "card-img-top img-fluid", fallback: "no_image.png" %>
+		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 500, 400, class: "card-img-top img-fluid", fallback: "no_image.png" %>
 		      <div class="card-body px-2 py-3">
 		        <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
 		        <p class="card-text">内容：<%= @variable_cost.opinion %></p>
@@ -61,5 +95,23 @@
 		    </div>
 			</div>
 		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="card">
+			<p id="notice"><%= notice %></p>
+			<p>
+			  <strong>Address:</strong>
+			  <%= @variable_cost.address %>
+			</p>
+			<p>
+			  <strong>Latitude:</strong>
+			  <%= @variable_cost.latitude %>
+			</p>
+			<p>
+			  <strong>Longitude:</strong>
+			  <%= @variable_cost.longitude %>
+			</p>
+			<div id="map"></div>
+    </div>
 	</div>
 </div>

@@ -29,6 +29,8 @@ class VariableCostsController < ApplicationController
 	end
 
 	def update
+		@variable_cost.update(variable_cost_params)
+		redirect_to variable_cost_path(@variable_cost)
 	end
 
 	def destroy
@@ -46,7 +48,10 @@ class VariableCostsController < ApplicationController
 		 	:opinion,
 		 	:cost_image,
 		 	:payment_day,
-		 	:title
+		 	:title,
+		 	:address,
+		 	:latitude,
+		 	:longitude
 		 	)
 		end
 

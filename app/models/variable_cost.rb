@@ -3,6 +3,8 @@ class VariableCost < ApplicationRecord
 	belongs_to :category
 	has_many :cost_comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+	geocoded_by :address
+	after_validation :geocode, if: :address_changed?
 	attachment :cost_image
 
 	def favorited_by?(user)
