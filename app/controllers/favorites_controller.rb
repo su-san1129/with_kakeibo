@@ -4,13 +4,23 @@ class FavoritesController < ApplicationController
 
 	def create
 	  favorite = current_user.favorites.new(variable_cost_id: @variable_cost.id)
-	  favorite.save
-	  redirect_to variable_cost_path(@variable_cost)
+	  respond_to do |format|
+	  	if favorite.save
+	  		format.json { render 'favorites' }
+	  	else
+	  		format.json { render favorite.errors, status: :unprocessable_entity }
+	  	end
+	  end
 	end
 	def destroy
 	  favorite = current_user.favorites.find_by(variable_cost_id: @variable_cost.id)
-	  favorite.destroy
-	  redirect_to variable_cost_path(@variable_cost)
+	  respond_to do |format|
+	  	if favorite.destroy
+	  		format.json { render 'favorites' }
+	  	else
+	  		format.json { render favorite.errors, status: :unprocessable_entity }
+	  	end
+	  end
 	end
 
 	private

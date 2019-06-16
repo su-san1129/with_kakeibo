@@ -60,9 +60,9 @@ class VariableCostsController < ApplicationController
 		end
 
 	  def correct_user
-	    user = User.find(params[:id])
+	    user = @variable_cost.user
 	    if current_user != user
-	      redirect_to users_path
+	      redirect_to user_path(user)
 	    end
 	  end
 end

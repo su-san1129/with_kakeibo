@@ -44,24 +44,13 @@
 		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 500, 400, class: "card-img-top img-fluid", fallback: "no_image.png" %>
 		      <div class="card-body px-2 py-3">
 		        <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
-		        <p class="card-text">内容：<%= @variable_cost.opinion %></p>
+		        <div class="card-text">
+		        	<p>金額：<%= @variable_cost.price %></p>
+		        	<p>内容：<%= @variable_cost.opinion %></p>
+		        </div>
 		        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
 		       <!--  ファボはここから -->
-		        <% if @variable_cost.favorited_by?(current_user) %>
-						  <li>
-						    <%= link_to variable_cost_favorites_path(@variable_cost), method: :delete do %>
-						      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-						      <%= @variable_cost.favorites.count %> いいね
-						    <% end %>
-						  </li>
-						<% else %>
-						  <li>
-						    <%= link_to variable_cost_favorites_path(@variable_cost), method: :post do %>
-						      <i class="fa fa-heart-o" aria-hidden="true"></i>
-						      <%= @variable_cost.favorites.count %> いいね
-						    <% end %>
-						  </li>
-						<% end %>
+            <%= render 'favorites/favorites' %>
 						<!-- ここまで -->
 						<!-- コメントのリスト -->
 					  <ul class="list-group list-group-flush">
