@@ -9,9 +9,9 @@
 	<%= f.label :opinion, "内容" %>
 	<%= f.text_area :opinion, placeholder: "使ったものの詳細情報を記入。必須ではありません。", class: "form-control" %>
 	<%= f.date_select :payment_day, { default: Date.today }, class: "form-control bootstrap-date" %>
-	<%#= f.attachment_field :cost_image, class: "image", id: "file" %>
+	<%= f.attachment_field :cost_image, class: "image", id: "file" %>
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.label :住所 %>
-  <%= f.text_field :address %>
+  <%= f.text_field :address, id: "search-text", autocomplete: "search-text" %>
 	<%= f.submit "投稿", class: "form-control" %>
 <% end %>

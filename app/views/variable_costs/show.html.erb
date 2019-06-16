@@ -37,11 +37,11 @@
 		<%= render 'users/profile_bar' %>
 	</div>
 
-	<div class="col-sm-9">
+	<div class="col-sm-5">
 		<div class="container">
 			<div class="row">
 		    <div class="card img-thumbnail">
-		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 60, 60, class: "card-img-top img-fluid", fallback: "no_image.png" %>
+		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 500, 400, class: "card-img-top img-fluid", fallback: "no_image.png" %>
 		      <div class="card-body px-2 py-3">
 		        <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
 		        <p class="card-text">内容：<%= @variable_cost.opinion %></p>
@@ -93,23 +93,25 @@
 					 <!--  リストここまで -->
 		      </div>
 		    </div>
-		    <div class="card">
-					<p id="notice"><%= notice %></p>
-					<p>
-					  <strong>Address:</strong>
-					  <%= @variable_cost.address %>
-					</p>
-					<p>
-					  <strong>Latitude:</strong>
-					  <%= @variable_cost.latitude %>
-					</p>
-					<p>
-					  <strong>Longitude:</strong>
-					  <%= @variable_cost.longitude %>
-					</p>
-					<div id="map"></div>
-		    </div>
 			</div>
 		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="card">
+			<p id="notice"><%= notice %></p>
+			<p>
+			  <strong>Address:</strong>
+			  <%= @variable_cost.address %>
+			</p>
+			<p>
+			  <strong>Latitude:</strong>
+			  <%= @variable_cost.latitude %>
+			</p>
+			<p>
+			  <strong>Longitude:</strong>
+			  <%= @variable_cost.longitude %>
+			</p>
+			<div id="map"></div>
+    </div>
 	</div>
 </div>
