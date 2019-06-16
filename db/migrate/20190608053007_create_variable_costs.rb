@@ -7,6 +7,9 @@ class CreateVariableCosts < ActiveRecord::Migration[5.2]
 			t.text :opinion
 			t.text :cost_image_id
 			t.datetime :payment_day
+      t.string :address
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end
