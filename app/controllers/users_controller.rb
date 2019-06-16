@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 		@variable_costs = @user.variable_costs.order(created_at: :desc)
 		@income_price = Income.find_by(user_id: current_user.id, payday: Time.now.all_month)
 		@chart_data = @user.variable_costs.joins(:category).group("categories.category").sum(:price)
+		@user.fixed_costs.build
 
 	end
 
@@ -33,7 +34,12 @@ class UsersController < ApplicationController
 
  private
     def user_params
-  	 params.require(:user).permit(:name, :introduction, :profile_image)
+  	 params.require(:user).permit(
+  	 	:name,
+  	 	:introduction,
+  	 	:profile_image,
+  	 	fixed_costs_attributes: [:id, :fixed_cost_price, :fixed_cost_time, :_destroy]
+  	 	)
     end
 
     def set_user
