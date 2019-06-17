@@ -50,7 +50,9 @@
 		        </div>
 		        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
 		       <!--  ファボはここから -->
-            <%= render 'favorites/favorites' %>
+			      <div id="favorites_<%= @variable_cost.id %>">
+	          	<%= render 'favorites/favorites', variable_cost: @variable_cost %>
+	          </div>
 						<!-- ここまで -->
 						<!-- コメントのリスト -->
 					  <ul class="list-group list-group-flush">

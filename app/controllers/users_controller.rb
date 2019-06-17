@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 	def show
 		@variable_cost = VariableCost.new
 		@income = Income.new
+		@fixed_costs = @user.fixed_costs
 		@category = Category.new
 		@categories = @user.variable_costs.joins(:category).group("categories.category").count
 		@variable_costs = @user.variable_costs.order(created_at: :desc)
@@ -33,7 +34,12 @@ class UsersController < ApplicationController
 
  private
     def user_params
-  	 params.require(:user).permit(:name, :introduction, :profile_image)
+  	 params.require(:user).permit(
+  	 	:name,
+  	 	:introduction,
+  	 	:profile_image,
+  	 	fixed_costs_attributes: [:id, :fixed_cost_price, :fixed_cost_time, :_destroy]
+  	 	)
     end
 
     def set_user

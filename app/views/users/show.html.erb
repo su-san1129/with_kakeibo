@@ -5,6 +5,7 @@
 
 
 	<div class="col-sm-6">
+	<div class="card px-3">
 		<%= month_calendar events: @variable_costs do |date, variable_costs| %>
 		  <%= date.day %>
 		  <% sum = 0 %>
@@ -41,6 +42,7 @@
 			<% end %>
 		</div>
 	</div>
+	</div>
 	<div class="col-sm-3">
 			<%= render 'simple_calendar/chart_data' %>
 		<div class="container">
@@ -76,6 +78,22 @@
 							<% end %>
 						</ul>
 						<div><%= render 'categories/category_modal' %></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card my-2">
+				<div class="card-body">
+					<div class="card-title">固定費用</div>
+					<div class="card-text">
+						<ul class="list-group list-group-flush">
+							<% @fixed_costs.each do |fixed_cost| %>
+							<li class="list-group-item">
+								<%= fixed_cost.fixed_cost_price %>
+							</li>
+							<% end %>
+						</ul>
+						<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
 					</div>
 				</div>
 			</div>

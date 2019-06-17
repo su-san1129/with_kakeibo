@@ -1,15 +1,15 @@
-<% if @variable_cost.favorited_by?(current_user) %>
+<% if variable_cost.favorited_by?(current_user) %>
   <li>
-    <%= link_to variable_cost_favorites_path(@variable_cost), method: :delete, remote: true do %>
+    <%= link_to variable_cost_favorites_path(variable_cost),remote: true, method: :delete do %>
       <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= @variable_cost.favorites.count %> いいね
+      <%= variable_cost.favorites.count %> いいね
     <% end %>
   </li>
 <% else %>
   <li>
-    <%= link_to variable_cost_favorites_path(@variable_cost), method: :post, remote: true do %>
+    <%= link_to variable_cost_favorites_path(variable_cost), method: :post, remote: true do %>
       <i class="fa fa-heart-o" aria-hidden="true"></i>
-      <%= @variable_cost.favorites.count %> いいね
+      <%= variable_cost.favorites.count %> いいね
     <% end %>
   </li>
 <% end %>
