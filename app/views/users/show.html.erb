@@ -81,7 +81,22 @@
 					</div>
 				</div>
 			</div>
-			<%= render 'fixed_cost_form' %>
+
+			<div class="card my-2">
+				<div class="card-body">
+					<div class="card-title">固定費用</div>
+					<div class="card-text">
+						<ul class="list-group list-group-flush">
+							<% @fixed_costs.each do |fixed_cost| %>
+							<li class="list-group-item">
+								<%= fixed_cost.fixed_cost_price %>
+							</li>
+							<% end %>
+						</ul>
+						<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

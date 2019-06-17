@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	def show
 		@variable_cost = VariableCost.new
 		@income = Income.new
-		@fixed_costs = @user.fixed_costs.build
+		@fixed_costs = @user.fixed_costs
 		@category = Category.new
 		@categories = @user.variable_costs.joins(:category).group("categories.category").count
 		@variable_costs = @user.variable_costs.order(created_at: :desc)
