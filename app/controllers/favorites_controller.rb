@@ -5,7 +5,6 @@ class FavoritesController < ApplicationController
 	def create
 	  favorite = current_user.favorites.new(variable_cost_id: @variable_cost.id)
 	  favorite.save
-	  render json: variable_cost_path(@variable_cost)
 	  # respond_to do |format|
 	  # 	if favorite.save
 	  # 		format.json { render variable_cost_path(@variable_cost) }
@@ -17,7 +16,6 @@ class FavoritesController < ApplicationController
 	def destroy
 	  favorite = current_user.favorites.find_by(variable_cost_id: @variable_cost.id)
 	  favorite.destroy
-	  render json: variable_cost_path(@variable_cost)
 	  # respond_to do |format|
 	  # 	if favorite.destroy
 	  # 		format.json { render variable_cost_path(@variable_cost) }

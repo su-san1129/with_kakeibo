@@ -5,6 +5,7 @@
 
 
 	<div class="col-sm-6">
+	<div class="card px-3">
 		<%= month_calendar events: @variable_costs do |date, variable_costs| %>
 		  <%= date.day %>
 		  <% sum = 0 %>
@@ -40,6 +41,7 @@
 				</div>
 			<% end %>
 		</div>
+	</div>
 	</div>
 	<div class="col-sm-3">
 			<%= render 'simple_calendar/chart_data' %>
@@ -79,6 +81,7 @@
 					</div>
 				</div>
 			</div>
+			<%= render 'fixed_cost_form' %>
 		</div>
 	</div>
 </div>

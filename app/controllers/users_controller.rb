@@ -11,12 +11,12 @@ class UsersController < ApplicationController
 	def show
 		@variable_cost = VariableCost.new
 		@income = Income.new
+		@fixed_costs = @user.fixed_costs.build
 		@category = Category.new
 		@categories = @user.variable_costs.joins(:category).group("categories.category").count
 		@variable_costs = @user.variable_costs.order(created_at: :desc)
 		@income_price = Income.find_by(user_id: current_user.id, payday: Time.now.all_month)
 		@chart_data = @user.variable_costs.joins(:category).group("categories.category").sum(:price)
-		@user.fixed_costs.build
 
 	end
 
