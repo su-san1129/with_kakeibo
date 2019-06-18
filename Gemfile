@@ -69,6 +69,9 @@ gem 'simple_calendar'
 gem 'chartkick'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+<<<<<<< HEAD
 gem 'geocoder'
 gem 'dotenv-rails'
 gem 'cocoon'
+=======
+>>>>>>> parent of 6d54562... [add]google map API
