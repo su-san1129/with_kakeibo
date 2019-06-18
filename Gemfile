@@ -60,7 +60,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'devise'
@@ -69,9 +68,6 @@ gem 'simple_calendar'
 gem 'chartkick'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
-<<<<<<< HEAD
 gem 'geocoder'
 gem 'dotenv-rails'
 gem 'cocoon'
-=======
->>>>>>> parent of 6d54562... [add]google map API

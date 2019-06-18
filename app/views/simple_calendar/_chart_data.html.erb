@@ -1,11 +1,11 @@
 <% if @chart_data.present? %>
-	<div class="col-12 mb-3">
+	<div class="col-12 mb-3 pb-2">
 		<div class="card card-chart">
 		<%= pie_chart @chart_data %>
 		</div>
 	</div>
 <% else %>
-<div class="col-12 mb-3">
+<div class="col-12 mb-3 pb-2">
 	<div class="card chart-card">
 	<%= pie_chart ({"食費" => 10, "交通費" => 5, "通信費" => 3}) %>
 	</div>
