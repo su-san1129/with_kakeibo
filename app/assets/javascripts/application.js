@@ -20,16 +20,6 @@
 //= require cocoon
 //= require_tree .
 
-<<<<<<< HEAD
-
-$(function(){
-	$(document).on('click', 'input[type=submit]', function(){
-		if ($('input[type=text]').val() == ''){
-			return false;
-		}
-	})
-})
-=======
 $(function(){
     $fileField = $('#file')
 
@@ -53,4 +43,3 @@ $(function(){
       reader.readAsDataURL(file);
     });
   });
->>>>>>> master
