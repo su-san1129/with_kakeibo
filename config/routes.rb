@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end
   resources :variable_costs, only: [:index, :show, :edit, :create, :update, :destroy] do
-  	resource :cost_comments, only: [:create, :destroy]
+  	resources :cost_comments, only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
   resources :categories, only: [:create, :update, :destroy]

@@ -9,7 +9,7 @@ class CostCommentsController < ApplicationController
 	end
 
 	def destroy
-    comment = @variable_cost.cost_comments.find_by(params[:id])
+    comment = @variable_cost.cost_comments.find_by(id: params[:id],user_id: current_user.id)
     comment.destroy
 	end
 
