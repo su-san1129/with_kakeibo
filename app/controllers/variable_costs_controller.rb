@@ -1,12 +1,14 @@
 class VariableCostsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_variable_cost, only: [:show]
+	before_action :set_variable_cost, only: [:show, :edit, :update, :destroy]
 	before_action :correct_user, only: [:edit, :update]
 
 	def index
 	end
 
 	def show
+		@user = @variable_cost.user
+		@cost_comment = CostComment.new
 	end
 
 	def create
@@ -27,9 +29,13 @@ class VariableCostsController < ApplicationController
 	end
 
 	def update
+		@variable_cost.update(variable_cost_params)
+		redirect_to variable_cost_path(@variable_cost)
 	end
 
 	def destroy
+		@variable_cost.destroy
+		redirect_to user_path(current_user), notice: "post was successfully destroyed"
 	end
 
 	private
@@ -42,18 +48,20 @@ class VariableCostsController < ApplicationController
 		 	:opinion,
 		 	:cost_image,
 		 	:payment_day,
-		 	:title
+		 	:address,
+		 	:latitude,
+		 	:longitude
 		 	)
 		end
 
     def set_variable_cost
-			@variable = VariableCost.find(params[:id])
+			@variable_cost = VariableCost.find(params[:id])
 		end
 
 	  def correct_user
-	    user = User.find(params[:id])
+	    user = @variable_cost.user
 	    if current_user != user
-	      redirect_to users_path
+	      redirect_to user_path(user)
 	    end
 	  end
 end

@@ -1,0 +1,32 @@
+<% if @user == current_user %>
+<div class="container">
+	<div class="card mb-3">
+    <div class="card-body text-center">
+      <p><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
+      <h4 class="card-title"><%= current_user.name %></h4>
+      <p class="card-text"><%= current_user.introduction %></p>
+      <%= link_to "編集", edit_user_path(current_user), class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+  <div class="card mb-5">
+  	<div class="card-body">
+  		<div class="card-title">新規投稿</div>
+  		<div class="card-text">
+  			<div class="form-group">
+  				<%= render 'variable_costs/new_form' %>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</div>
+<% else %>
+<div class="container">
+	<div class="card mb-3">
+    <div class="card-body text-center">
+      <p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
+      <h4 class="card-title"><%= @user.name %></h4>
+      <p class="card-text"><%= @user.introduction %></p>
+    </div>
+  </div>
+</div>
+<% end %>

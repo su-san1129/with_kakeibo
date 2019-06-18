@@ -1,0 +1,105 @@
+<script type="text/javascript">
+	function initMap() {
+
+    var gmap = {lat: <%= @variable_cost.latitude %>, lng: <%= @variable_cost.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: gmap,
+      zoom: 15
+    });
+
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @variable_cost.address %>';
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+        position:gmap,
+        map: map,
+        title: contentString
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
+	}
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
+</script>
+<div class="row mb-5">
+	<div class="col-sm-3">
+		<%= render 'users/profile_bar' %>
+	</div>
+
+	<div class="col-sm-5">
+		<div class="container">
+			<div class="row">
+		    <div class="card img-thumbnail">
+		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 550, 400, class: "card-img-top img-fluid", fallback: "no_image.png" %>
+		      <div class="card-body px-2 py-3">
+		        <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
+		        <div class="card-text">
+		        	<p>金額：<%= @variable_cost.price %></p>
+		        	<p>内容：<%= @variable_cost.opinion %></p>
+		        </div>
+		        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
+		       <!--  ファボはここから -->
+			      <div id="favorites_<%= @variable_cost.id %>">
+	          	<%= render 'favorites/favorites', variable_cost: @variable_cost %>
+	          </div>
+						<!-- ここまで -->
+						<!-- コメントのリスト -->
+					  <ul class="list-group list-group-flush">
+					  	<% @variable_cost.cost_comments.each do |cost_comment| %>
+						  	<li class="list-group-item">
+						  		<div class="row">
+							  		<div class="col-3"><%= attachment_image_tag cost_comment.user, :profile_image, :fill, 30, 30, class: "img-fluid", fallback: "no_image.png", size: "30x30" %></div>
+							  		<div class="col-9">
+							  			<h6><%= cost_comment.user.name %></h6>
+							  			<p><%= cost_comment.comment %></p>
+							  			<%= link_to "削除", variable_cost_cost_comments_path(@variable_cost), method: :delete, class:"btn btn-secondary btn-sm my-1" %>
+							  		</div>
+							  	</div>
+						  	</li>
+						  <% end %>
+					  </ul>
+					 <!--  リストここまで -->
+					 <!-- コメントはここから -->
+					  <i class="fa fa-comment-alt"></i>
+					  <a href="#comments"><%= @variable_cost.cost_comments.count %></a>
+					  <%= form_for [@variable_cost, @cost_comment] do |f| %>
+					    <div class="row">
+				        <div class="col-sm-12">
+				          <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+				        </div>
+					    </div>
+					    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+						<% end %>
+						<!-- コメントはここまで -->
+		      </div>
+		    </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="card">
+			<p>
+			  <strong>Address:</strong>
+			  <%= @variable_cost.address %>
+			</p>
+			<p>
+			  <strong>Latitude:</strong>
+			  <%= @variable_cost.latitude %>
+			</p>
+			<p>
+			  <strong>Longitude:</strong>
+			  <%= @variable_cost.longitude %>
+			</p>
+			<div id="map"></div>
+    </div>
+	</div>
+</div>

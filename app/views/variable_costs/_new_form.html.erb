@@ -1,14 +1,20 @@
-<%= form_for @variable_cost, remote: true do |f| %>
-	<%= f.label :title, "タイトル" %>
-	<%= f.text_field :title, class: "form-control" %>
+<%= form_for @variable_cost do |f| %>
 	<%= f.label :price, "使った金額" %>
 	<%= f.text_field :price, class: "form-control" %>
 	<%= f.label :category_id, "カテゴリーを選択" %>
-	<%= f.collection_select :category_id, Category.all, :id, :category, {}, {class: "form-control"} %>
+	<%= f.collection_select :category_id,
+		Category.where(user_id: current_user.id)
+		.or(Category.where(status: 1)), :id, :category,{},
+		{class: "form-control"} %>
 	<%= f.label :opinion, "内容" %>
 	<%= f.text_area :opinion, placeholder: "使ったものの詳細情報を記入。必須ではありません。", class: "form-control" %>
 	<%= f.date_select :payment_day, { default: Date.today }, class: "form-control bootstrap-date" %>
-	<%#= f.attachment_field :cost_image, class: "image", id: "file" %>
+	<div class="form-group">
+    <%= f.attachment_field :cost_image, class: "image", id: "file" %>
+	</div>
+	<div id="img_field" onClick="$('#file').click()" ></div>
 	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.label :住所 %>
+  <%= f.text_field :address, id: "search-text", autocomplete: "search-text" %>
 	<%= f.submit "投稿", class: "form-control" %>
 <% end %>

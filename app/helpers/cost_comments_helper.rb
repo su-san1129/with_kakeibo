@@ -1,0 +1,2 @@
+module CostCommentsHelper
+end

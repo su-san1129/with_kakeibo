@@ -10,14 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_09_115759) do
+ActiveRecord::Schema.define(version: 2019_06_15_080804) do
 
   create_table "categories", force: :cascade do |t|
     t.integer "user_id"
     t.string "category"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "cost_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "variable_cost_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cost_comments_on_user_id"
+    t.index ["variable_cost_id"], name: "index_cost_comments_on_variable_cost_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "variable_cost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["variable_cost_id"], name: "index_favorites_on_variable_cost_id"
   end
 
   create_table "fixed_costs", force: :cascade do |t|
@@ -30,11 +50,12 @@ ActiveRecord::Schema.define(version: 2019_06_09_115759) do
   end
 
   create_table "incomes", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "payday"
     t.integer "income"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,7 +86,9 @@ ActiveRecord::Schema.define(version: 2019_06_09_115759) do
     t.text "opinion"
     t.text "cost_image_id"
     t.datetime "payment_day"
-    t.string "title"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_variable_costs_on_category_id"
