@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+  get 'relationships/destroy'
   root to: "top#index"
   devise_for :users
 
-  resources :users, only: [:index, :show, :edit, :update, :destroy]
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
+  end
   resources :variable_costs, only: [:index, :show, :edit, :create, :update, :destroy] do
   	resource :cost_comments, only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
