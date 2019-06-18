@@ -7,17 +7,12 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script>
-      $(function(){
-        $('.variable-fade').fadeMover();
-      });
-    </script>
   </head>
 
   <body style="background-color: #f6f8fa">
+    <%= render 'shared/header' %>
     <div class="container-fluid">
       <%= flash[:notice] %>
-      <%= render 'shared/header' %>
       <%= yield %>
     </div>
   </body>

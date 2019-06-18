@@ -2,18 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.ranking {
+  position: relative;
+  background: #ffd98a;
+  padding: 2px 5px 2px 25px;
+  font-size: 20px;
+  color: #474747;
+  border-radius: 0 10px 10px 0;
+}
+
+.ranking:before {
+  font-family: 'Font Awesome 5 Free';
+  content: '\f521';
+  font-weight: 900;
+  display: inline-block;
+  line-height: 2rem;
+  position: absolute;
+  padding: 0em;
+  color: white;
+  background: #ffa337;
+  width: 40px;
+  text-align: center;
+  height: 40px;
+  left: -1.35em;
+  top: 50%;
+  transform: translateY(-50%);
+  border: solid 3px white;
+  border-radius: 50%;
+}
 
 .user-background{
   background-image: url(user_background.png);
   background-size: cover;
-}
-
-.alt-table-responsive {
-    width: 100%;
-    overflow-y: hidden;
-    overflow-x: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -webkit-overflow-scrolling: touch;
 }
 
 .card-chart{

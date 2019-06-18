@@ -5,6 +5,11 @@
 
 
 	<div class="col-sm-6">
+		<script>
+      $(function(){
+        $('.variable-fade').fadeMover();
+      });
+    </script>
 		<div class="card px-3 mb-3">
 			<%= month_calendar events: @variable_costs do |date, variable_costs| %>
 			  <%= date.day %>
@@ -31,7 +36,6 @@
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item">カテゴリー：<%= v.category.category %></li>
 										<li class="list-group-item">金額：￥<%= number_with_delimiter(v.price) %></li>
-										<li class="list-group-item">詳細：<%= v.opinion %></li>
 										<li class="list-group-item">支払日：<%= v.payment_day.strftime('%Y/%m/%d') %></li>
 									</ul>
 									<%= link_to "削除", variable_cost_path(v.id), method: :delete, class:"btn btn-secondary btn-sm my-1" %></p>

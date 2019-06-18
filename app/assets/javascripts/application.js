@@ -20,6 +20,26 @@
 //= require cocoon
 //= require_tree .
 
+// 固定ヘッダーを薄くする
+$(document).ready(function() {
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 0) {
+      $('.navbar').css('opacity', 0.8);
+    } else {
+      $('.navbar').css('opacity', 1);
+    }
+  });
+});
+
+$(function() {
+  $('.navbar')
+    // マウスポインターが画像に乗った時の動作
+    .mouseover(function(e) {
+      $('.navbar').css('opacity', 1).fadeIn('slow');
+    })
+});
+
+// 画像プレビュー機能のjs
 $(function(){
     $fileField = $('#file')
 
