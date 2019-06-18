@@ -48,14 +48,9 @@ class VariableCostsController < ApplicationController
 		 	:opinion,
 		 	:cost_image,
 		 	:payment_day,
-<<<<<<< HEAD
-		 	:title,
 		 	:address,
 		 	:latitude,
 		 	:longitude
-=======
-		 	:title
->>>>>>> parent of 6d54562... [add]google map API
 		 	)
 		end
 

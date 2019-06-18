@@ -55,11 +55,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_080804) do
     t.integer "income"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.index ["user_id"], name: "index_incomes_on_user_id"
-=======
-    t.integer "user_id"
->>>>>>> parent of 6d54562... [add]google map API
   end
 
   create_table "users", force: :cascade do |t|

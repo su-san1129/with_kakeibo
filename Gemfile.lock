@@ -301,11 +301,8 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise
-<<<<<<< HEAD
   dotenv-rails
   geocoder
-=======
->>>>>>> parent of 6d54562... [add]google map API
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
