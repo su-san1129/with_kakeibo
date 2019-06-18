@@ -6,13 +6,11 @@ class CostCommentsController < ApplicationController
     comment = current_user.cost_comments.new(cost_comment_params)
     comment.variable_cost_id = @variable_cost.id
     comment.save
-    redirect_to variable_cost_path(@variable_cost)
 	end
 
 	def destroy
-    comment = current_user.cost_comments.find_by(variable_cost_id: @variable_cost.id)
+    comment = @variable_cost.cost_comments.find_by(id: params[:id],user_id: current_user.id)
     comment.destroy
-    redirect_to variable_cost_path(@variable_cost)
 	end
 
 	private

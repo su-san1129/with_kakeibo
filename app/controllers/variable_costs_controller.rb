@@ -17,7 +17,7 @@ class VariableCostsController < ApplicationController
 		respond_to do |format|
 	    if @variable_cost.save
 	      format.html { redirect_to user_path(current_user.id), notice: '入力が完了しました！' }
-	      # format.json { render :show, status: :created, location: @variable_cost }
+	      format.json { render json: @variable_cost }
 	    else
 	      format.html { render "users/index" }
 	      # format.json { render json: @variable_cost.errors, status: :unprocessable_entity }

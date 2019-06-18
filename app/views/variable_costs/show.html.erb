@@ -54,27 +54,16 @@
 						<!-- ここまで -->
 						<!-- コメントのリスト -->
 					  <ul class="list-group list-group-flush">
-					  	<% @variable_cost.cost_comments.each do |cost_comment| %>
-						  	<li class="list-group-item">
-						  		<div class="row">
-							  		<div class="col-3"><%= attachment_image_tag cost_comment.user, :profile_image, :fill, 30, 30, class: "img-fluid", fallback: "no_image.png", size: "30x30" %></div>
-							  		<div class="col-9">
-							  			<h6><%= cost_comment.user.name %></h6>
-							  			<p><%= cost_comment.comment %></p>
-							  			<%= link_to "削除", variable_cost_cost_comments_path(@variable_cost), method: :delete, class:"btn btn-secondary btn-sm my-1" %>
-							  		</div>
-							  	</div>
-						  	</li>
-						  <% end %>
+					  	<%= render 'cost_comments/comment', variable_cost: @variable_cost %>
 					  </ul>
 					 <!--  リストここまで -->
 					 <!-- コメントはここから -->
-					  <i class="fa fa-comment-alt"></i>
+					  <i class="fa fa-comment-alt faa-bounce animated-hover"></i>
 					  <a href="#comments"><%= @variable_cost.cost_comments.count %></a>
-					  <%= form_for [@variable_cost, @cost_comment] do |f| %>
+					  <%= form_for [@variable_cost, @cost_comment],remote:true do |f| %>
 					    <div class="row">
 				        <div class="col-sm-12">
-				          <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+				          <%= f.text_area :comment, rows:'5', class: "form-control post-comment",placeholder: "コメントをここに" %>
 				        </div>
 					    </div>
 					    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
