@@ -4,6 +4,9 @@
  * jquery.fademover.js
  * Version: 2012-02-06
 */
+
+
+
 (function($){
 	$.fn.fadeMover = function(options) {
 		var defaults = {

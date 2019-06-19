@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 	  end
 
 	  # ログアウト後に遷移するページ
-	  def after_sign_out_path_for(resource_or_root)
+	  def after_sign_out_path_for(resource)
 	  	root_path
 	  end
 end

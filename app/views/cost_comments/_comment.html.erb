@@ -1,11 +1,14 @@
 <% variable_cost.cost_comments.each do |cost_comment| %>
 	<li class="list-group-item">
 		<div class="row">
-			<div class="col-3"><%= attachment_image_tag cost_comment.user, :profile_image, :fill, 30, 30, class: "img-fluid", fallback: "no_image.png", size: "60x60" %></div>
+			<div class="col-3"><%= attachment_image_tag cost_comment.user, :profile_image, :fill, 30, 30, class: "rounded-circle img-fluid", fallback: "no_image.png", size: "60x60" %></div>
 			<div class="col-9">
 				<h6><%= cost_comment.user.name %></h6>
 				<p><%= cost_comment.comment %></p>
-				<%= link_to "削除", variable_cost_cost_comment_path(variable_cost.id,cost_comment.id), method: :delete,remote: true, class:"btn btn-secondary btn-sm my-1" %>
+				<% if cost_comment.user.id == current_user.id %>
+					<%= link_to "削除", variable_cost_cost_comment_path(variable_cost.id,cost_comment.id), method: :delete,remote: true, class:"btn btn-secondary btn-sm my-1" %>
+				<% else %>
+				<% end %>
 			</div>
 		</div>
 	</li>

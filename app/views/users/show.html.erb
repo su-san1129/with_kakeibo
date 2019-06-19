@@ -24,8 +24,11 @@
 				<% end %>
 			<% end %>
 		</div>
+
 		<div class="card px-3 mb-3 pb-3">
-			<div class="col-12 btn btn-outline-dark my-3">支出一覧　(暫定)</div>
+			<div class="col-12">
+			<h2 class="variable-user-index pt-3">支出一覧</h2>
+			</div>
 			<div class="row">
 				<% @variable_costs.each do |v| %>
 					<div class="col-sm-6">
@@ -48,29 +51,54 @@
 				<% end %>
 			</div>
 		</div>
+
 	</div>
+
 	<div class="col-sm-3">
 			<%= render 'simple_calendar/chart_data' %>
 		<div class="container">
-			<div class="card">
-				<div class="card-body text-center">
-					<div><%= render 'incomes/new_modal' %></div>
-					<% if @income_price.present? && balance_price < 0 %>
-						<div class="card-title">今月の給料</div>
-						<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
-						<div class="card-title">今月の残額</div>
-						<h2 class="card-text">￥<span class="text-danger"><%= number_with_delimiter(balance_price) %></span></h2>
-					<% elsif @income_price.present? %>
-					<div class="card-title">今月の給料</div>
-						<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
-						<div class="card-title">今月の残額</div>
-						<div class="card-text">￥<%= number_with_delimiter(balance_price) %></div>
-					<% else %>
-						<div class="card-title">今月の給料</div>
-						<div class="card-text">登録はまだありません。</div>
-					<% end %>
+
+			<% if @user == current_user %>
+				<div class="card">
+					<div class="card-body text-center">
+						<% if @income_price.present? && balance_price < 0 %>
+							<div class="card-header"><i class="fas fa-money-bill-wave"></i>今月の給料</div>
+							<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+							<div class="card-title">今月の残額</div>
+							<h2 class="card-text">￥<span class="text-danger"><%= number_with_delimiter(balance_price) %></span></h2>
+						<% elsif @income_price.present? %>
+						<div class="card-header"><i style="color:#ffd900;" class="fas fa-money-bill-wave icons"></i>今月の給料</div>
+							<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+							<div class="card-header"><i style="color:#ffd900;" class="fas fa-hand-holding-usd icons"></i>今月の残額</div>
+							<div class="card-text">￥<%= number_with_delimiter(balance_price) %></div>
+						<% else %>
+							<div class="card-title">今月の給料</div>
+							<div class="card-text">登録はまだありません。</div>
+						<% end %>
+						<div><%= render 'incomes/new_modal' %></div>
+					</div>
 				</div>
-			</div>
+
+				<div class="card my-2">
+					<div class="card-body">
+						<div class="card-title">固定費用</div>
+						<div class="card-text">
+							<ul class="list-group list-group-flush">
+								<% @fixed_costs.each do |fixed_cost| %>
+								<li class="list-group-item">
+									固定費用名：<%= fixed_cost.fixed_cost_price %>
+								</li>
+								<% end %>
+							</ul>
+							<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
+							<div class="card-footer">
+								<strong>固定費用（合計）</strong>：<%= fixed_sum_price %>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% else %>
+			<% end %>
 
 			<div class="card my-2">
 				<div class="card-body">
@@ -88,21 +116,6 @@
 				</div>
 			</div>
 
-			<div class="card my-2">
-				<div class="card-body">
-					<div class="card-title">固定費用</div>
-					<div class="card-text">
-						<ul class="list-group list-group-flush">
-							<% @fixed_costs.each do |fixed_cost| %>
-							<li class="list-group-item">
-								<%= fixed_cost.fixed_cost_price %>
-							</li>
-							<% end %>
-						</ul>
-						<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*ユーザーのindexページ*/
 .ranking {
   position: relative;
   background: #ffd98a;
@@ -29,6 +30,24 @@
   transform: translateY(-50%);
   border: solid 3px white;
   border-radius: 50%;
+}
+/*indexここまで*/
+
+/*ユーザーのshowページ*/
+.icons{
+  font-size: 1.2rem;
+  padding-right: 6px;
+}
+
+#variable_cost_payment_day_2i{
+  width: 70px;
+}
+
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
 }
 
 .user-background{
@@ -72,4 +91,40 @@
   color: black;
 }
 
+.variable-cost-post {
+  position: relative;
+  background: #f1f8ff;
+  padding: 0.25em 0.5em;
+  border-left: solid 2em #ff938b;
+}
 
+.variable-cost-post:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f303";
+  font-weight: 900;
+  position: absolute;
+  padding: 0em;
+  color: white;
+  left: -1.35em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+h2.variable-user-index {
+  position: relative;/*相対位置*/
+  padding-left: 1.2em;/*アイコン分のスペース*/
+  line-height: 1.4;/*行高*/
+  color: #7b6459;/*文字色*/
+}
+
+h2.variable-user-index:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f1b0";
+  font-weight: 900;
+  position: absolute;
+  font-size: 1em;
+  left: 0;
+  color: #ff938b;
+}
+
+/*showここまで*/
