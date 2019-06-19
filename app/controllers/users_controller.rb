@@ -49,7 +49,13 @@ class UsersController < ApplicationController
   	 	:name,
   	 	:introduction,
   	 	:profile_image,
-  	 	fixed_costs_attributes: [:id, :fixed_cost_price, :fixed_cost_time, :_destroy]
+  	 	fixed_costs_attributes: [
+  	 		:id,
+  	 		:category_id,
+  	 		:fixed_cost_price,
+  	 		:fixed_cost_time,
+  	 		:fixed_cost_name,
+  	 		:_destroy]
   	 	)
     end
 

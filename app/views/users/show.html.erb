@@ -87,6 +87,9 @@
 								<% @fixed_costs.each do |fixed_cost| %>
 								<li class="list-group-item">
 									固定費用名：<%= fixed_cost.fixed_cost_price %>
+									<p style="font-size: 14px; color: gray;">
+										支払日:<%= fixed_cost.fixed_cost_time.strftime('%Y/%m/%d') %>
+									</p>
 								</li>
 								<% end %>
 							</ul>

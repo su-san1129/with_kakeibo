@@ -46,20 +46,30 @@
 		        	<p>金額：<%= @variable_cost.price %></p>
 		        	<p>内容：<%= @variable_cost.opinion %></p>
 		        </div>
-		        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
+
 		       <!--  ファボはここから -->
 			      <div id="favorites_<%= @variable_cost.id %>">
 	          	<%= render 'favorites/favorites', variable_cost: @variable_cost %>
 	          </div>
 						<!-- ここまで -->
+
+						<!-- コメントのカウント -->
+						<div style="margin-left: 40px" class="comment-group">
+							<i class="fa fa-comment-alt faa-bounce animated-hover"></i>
+					  	<a href="#comments"><%= @variable_cost.cost_comments.count %></a>
+					  </div>
+					  <!-- コメントのカウントここまで -->
+
 						<!-- コメントのリスト -->
+						<% if @variable_cost.cost_comments.present? %>
+							<p>コメント一覧</p>
+						<% end %>
 					  <ul class="list-group list-group-flush">
 					  	<%= render 'cost_comments/comment', variable_cost: @variable_cost %>
 					  </ul>
 					 <!--  リストここまで -->
+
 					 <!-- コメントはここから -->
-					  <i class="fa fa-comment-alt faa-bounce animated-hover"></i>
-					  <a href="#comments"><%= @variable_cost.cost_comments.count %></a>
 					  <%= form_for [@variable_cost, @cost_comment],remote:true do |f| %>
 					    <div class="row">
 				        <div class="col-sm-12">
@@ -69,26 +79,40 @@
 					    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 						<% end %>
 						<!-- コメントはここまで -->
+
 		      </div>
 		    </div>
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-4">
-		<div class="card">
-			<p>
-			  <strong>住所:</strong>
-			  <%= @variable_cost.address %>
-			</p>
-			<p>
-			  <strong>緯度:</strong>
-			  <%= @variable_cost.latitude %>
-			</p>
-			<p>
-			  <strong>経度:</strong>
-			  <%= @variable_cost.longitude %>
-			</p>
-			<div id="map"></div>
-    </div>
-	</div>
+	<% if @variable_cost.address.present? %>
+		<div class="col-sm-4">
+			<div class="card">
+				<p>
+				  <strong>住所:</strong>
+				  <%= @variable_cost.address %>
+				</p>
+				<p>
+				  <strong>緯度:</strong>
+				  <%= @variable_cost.latitude %>
+				</p>
+				<p>
+				  <strong>経度:</strong>
+				  <%= @variable_cost.longitude %>
+				</p>
+				<div id="map"></div>
+	    </div>
+		</div>
+	<% else %>
+		<div class="col-sm-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-text">
+						住所を登録するとここに表示されます。
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
 </div>

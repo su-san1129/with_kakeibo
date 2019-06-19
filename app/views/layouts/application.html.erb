@@ -11,8 +11,11 @@
 
   <body style="background-color: #f6f8fa">
     <%= render 'shared/header' %>
-    <div class="container-fluid">
-      <%= flash[:notice] %>
+    <% if user_signed_in? %>
+      <div class="container-fluid">
+        <%= flash[:notice] %>
+    <% else%>
+    <% end %>
       <%= yield %>
     </div>
   </body>
