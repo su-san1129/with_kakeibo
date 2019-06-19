@@ -13,7 +13,6 @@
   position: relative;
 }
 
-
 .vertical-writing,.vertical-writing2,.vertical-writing3{
   writing-mode: vertical-rl;
   position: absolute;
@@ -118,7 +117,7 @@
 /*　about-contentのCSS　*/
 
 .about-body{
-  background: url(about_background.jpeg);
+  background: url(about_background_image.jpg);
   background-size: cover;
   background-position: 50% 50%;
   height: 100vh;
@@ -127,6 +126,9 @@
   background-color: white;
 }
 
+.about-title,.about-text{
+  font-family:  "游明朝","Yu Mincho","Tsukushi B Round Gothic","筑紫B丸ゴシック";
+}
 .about-title {
   position: relative;
 }
@@ -149,5 +151,7 @@
 
 .about-text{
   font-size: 20px;
-  text-align: center;
+  padding-top: 80px;
+  pointer-events: none;
 }
+

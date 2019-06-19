@@ -10,7 +10,11 @@
   </div>
   <div class="card mb-5">
   	<div class="card-body">
-  		<div class="card-title variable-cost-post">新規投稿</div>
+      <% if current_page?(user_path(current_user))%>
+  		  <div class="card-title variable-cost-post">新規投稿</div>
+      <% else %>
+        <div class="card-title variable-cost-post">投稿データを編集</div>
+      <% end %>
   		<div class="card-text">
   			<div class="form-group">
   				<%= render 'variable_costs/new_form' %>

@@ -30,7 +30,11 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav">
 	      <li class="nav-item">
-	        <a class="nav-link" href="#about">with 家計簿とは</a>
+	      	<% if current_page?(root_path) %>
+	        	<%= link_to "with 家計簿とは","#about", class:"nav-link" %>
+	        <% else %>
+	        	<%=link_to "with 家計簿とは", root_path(anchor: "about"), class: "nav-link" %>
+	        <% end %>
 	      </li>
 	      <li class="nav-item">
 	        <%=link_to "ログイン",  new_user_session_path, class: "nav-link" %>

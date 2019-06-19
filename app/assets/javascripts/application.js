@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require chartkick
@@ -21,7 +21,7 @@
 //= require_tree .
 
 // 固定ヘッダーを薄くする
-$(document).ready(function() {
+$(function() {
   $(window).scroll(function() {
     if ($(this).scrollTop() > 0) {
       $('.navbar').css('opacity', 0.8);
