@@ -20,6 +20,10 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  # バリデーション
+  validates :name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :introduction, length: { maximum: 50 }
+
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end

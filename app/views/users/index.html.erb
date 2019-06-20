@@ -1,81 +1,33 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4">
-			<h1 class="ranking">投稿数ランキング</h1>
+		<div class="col-sm-12">
+			<h1 class="ranking">ユーザー　一覧</h1>
 			<div class="card px-3 pt-3">
-				<% @users.each do |user| %>
-					<div class="card mb-3">
-						<%#= link_to user, class: "card mb-3" do %>
-				    <div class="card-body text-center">
-				      <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60,
-				      class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
-				      <h4 class="card-title"><%= link_to user.name, user_path(user) %></h4>
-				      <div class="card-text">
-				      	<p><%= user.introduction %></p>
-					      <% if current_user != user %>
-					        <% if user.followed_by?(current_user) %>
-					          <p><%=link_to_if user.followed_by?(current_user), "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
-					        <% else %>
-					          <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-					        <% end %>
-						    <% end %>
-						  </div>
-				    </div>
-				  	<%# end %>
+				<div class="row">
+					<% @users.each do |user| %>
+					<div class="col-sm-4">
+						<div class="card mb-3">
+							<%#= link_to user, class: "card mb-3" do %>
+					    <div class="card-body text-center">
+					      <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60,
+					      class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
+					      <h4 class="card-title"><%= link_to user.name, user_path(user) %></h4>
+					      <div class="card-text">
+					      	<p><%= truncate(user.introduction,length:20) %></p>
+						      <% if current_user != user %>
+						        <% if user.followed_by?(current_user) %>
+						          <p><%=link_to_if user.followed_by?(current_user), "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn btn-primary btn-sm" %></p>
+						        <% else %>
+						          <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-primary btn-sm" %></p>
+						        <% end %>
+							    <% end %>
+							  </div>
+					    </div>
+					  	<%# end %>
+						</div>
 					</div>
-				<% end %>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<h1 class="ranking">フォロー数ランキング</h1>
-			<div class="card px-3 pt-3">
-				<% @users.each do |user| %>
-					<div class="card mb-3">
-						<%#= link_to user, class: "card mb-3" do %>
-				    <div class="card-body text-center">
-				      <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60,
-				      class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
-				      <h4 class="card-title"><%= user.name %></h4>
-				      <div class="card-text">
-				      	<p><%= user.introduction %></p>
-					      <% if current_user != user %>
-					        <% if user.followed_by?(current_user) %>
-					          <p><%=link_to_if user.followed_by?(current_user), "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
-					        <% else %>
-					          <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-					        <% end %>
-						    <% end %>
-						  </div>
-				    </div>
-				  	<%# end %>
-					</div>
-				<% end %>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<h1 class="ranking">支払い総額ランキング</h1>
-			<div class="card px-3 pt-3">
-				<% @users.each do |user| %>
-					<div class="card mb-3">
-						<%#= link_to user, class: "card mb-3" do %>
-				    <div class="card-body text-center">
-				      <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60,
-				      class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
-				      <h4 class="card-title"><%= user.name %></h4>
-				      <div class="card-text">
-				      	<p><%= user.introduction %></p>
-					      <% if current_user != user %>
-					        <% if user.followed_by?(current_user) %>
-					          <p><%=link_to_if user.followed_by?(current_user), "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
-					        <% else %>
-					          <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-					        <% end %>
-						    <% end %>
-						  </div>
-				    </div>
-				  	<%# end %>
-					</div>
-				<% end %>
+					<% end %>
+				</div>
 			</div>
 		</div>
   </div>
