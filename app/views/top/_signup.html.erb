@@ -1,0 +1,20 @@
+<div id="link-signup" class="sigunp-content">
+  <div class="about-title-visual">
+  	<div class="container">
+  		<h2 class="about-title text-center pt-4 pb-5">
+        新規登録<span><%= image_tag 'cat_footprint.png',size: '30x30' %></span>
+      </h2>
+    </div>
+  </div>
+  <div class="signup-body">
+    <div class="container">
+      <div class="row">
+        <div class="offset-sm-7 col-sm-4 card signup-card mt-5 py-4">
+          <div class="card-text">
+            <%= render "devise/registrations/new"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

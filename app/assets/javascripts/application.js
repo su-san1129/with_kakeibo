@@ -18,6 +18,7 @@
 //= require chartkick
 //= require Chart.bundle
 //= require cocoon
+//= require jquery.jscroll.min.js
 //= require_tree .
 
 // 固定ヘッダーを薄くする
@@ -35,7 +36,7 @@ $(function() {
 $(function(){
     var headerHight = 186;
    // #で始まるアンカーをクリックした場合に処理
-  $('a[href^="#about"]').click(function() {
+  $('a[href^="#link"]').click(function() {
       // スクロールの速度
     var speed = 700; // ミリ秒
     // アンカーの値取得
@@ -85,3 +86,16 @@ $(function(){
         $(this).next('.custom-file-label').html($(this)[0].files[0].name);
       })
   });
+
+
+// 無限スクロール
+$(window).on('scroll', function() {
+  scrollHeight = $(document).height();
+  scrollPosition = $(window).height() + $(window).scrollTop();
+  if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+        $('.jscroll').jscroll({
+          contentSelector: '.user-list',
+          nextSelector: 'span.next:last a'
+        });
+  }
+});

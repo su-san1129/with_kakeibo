@@ -6,6 +6,8 @@
       <h4 class="card-title"><%= current_user.name %> さん</h4>
       <p class="card-text"><%= current_user.introduction %></p>
       <%= link_to "編集", edit_user_path(current_user), class: "btn btn-outline-dark" %>
+      <%= link_to "フォロ-", follows_user_path(@user.id) %>
+      <%= link_to "フォロワー", followers_user_path(@user.id) %>
     </div>
   </div>
   <div class="card mb-5">
@@ -37,6 +39,8 @@
             <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-outline-primary btn-sm" %></p>
         <% end %>
       </div>
+       <%= link_to "フォロ-", follows_user_path(@user.id) %>
+      <%= link_to "フォロワー", followers_user_path(@user.id) %>
     </div>
   </div>
 </div>

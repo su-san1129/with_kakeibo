@@ -23,4 +23,6 @@ module UsersHelper
 		return income_price.income - total_price
 	end
 
+	
+
 end

@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	before_action :set_user, only: [:show, :edit, :update, :destroy, :follows, :followers]
 	before_action :correct_user, only: [:edit, :update]
 
 
 	def index
-		@users = User.order(created_at: :desc)
-		@users2 = VariableCost.joins(:user).group(:name).sum(:price)
+		@users = User.page(params[:page]).reverse_order.per(6)
 	end
 
 	def show
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
 		@category = Category.new
 		@categories = @user.variable_costs.joins(:category).group("categories.category").count
 		@chart_data = @user.variable_costs.joins(:category).group("categories.category").sum(:price)
-
 	end
 
 	def edit
@@ -33,13 +31,11 @@ class UsersController < ApplicationController
 	end
 
 	def follows
-    user = User.find(params[:id])
-    @users = user.followings
+    @users = @user.followings.page(params[:page]).reverse_order.per(6)
   end
 
   def followers
-    user = User.find(params[:id])
-    @users = user.followers
+    @users = @user.followers.page(params[:page]).reverse_order.per(6)
   end
 
 
@@ -51,7 +47,6 @@ class UsersController < ApplicationController
   	 	:profile_image,
   	 	fixed_costs_attributes: [
   	 		:id,
-  	 		:category_id,
   	 		:fixed_cost_price,
   	 		:fixed_cost_time,
   	 		:fixed_cost_name,

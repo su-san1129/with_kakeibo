@@ -155,3 +155,36 @@
   pointer-events: none;
 }
 
+.about-headline{
+  font-size: 40px;
+}
+
+.about-text-normal{
+  font-size: 35px;
+}
+
+.puton-color{
+  color: #fff;
+}
+
+/*新規登録*/
+
+.signup-body{
+    padding-top: 0px;
+    background: url(registration-form.jpg);
+    background-size: cover;
+    height: 550px;
+}
+
+.login-body{
+    padding-top: 0px;
+    background: url(login_background_image.jpg);
+    background-size: cover;
+    height: 550px;
+    background-position: bottom;
+}
+
+.card.signup-card{
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}

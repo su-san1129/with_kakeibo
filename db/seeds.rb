@@ -11,9 +11,19 @@ user1 = User.create(
 	name: 'sample太郎',
 	introduction: 'サンプルです。家計簿頑張ります。',
 	password: 'password',
-	range: 6000000,
 	email: 'sample@sample.com'
 	)
+
+99.times do |n|
+  name = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(name:  name,
+              email:  email,
+              password:               password,
+              password_confirmation:  password
+        )
+end
 
 Category.create(category: '食費', user_id: user1.id, status: 1)
 Category.create(category: '交通費', user_id: user1.id, status: 1)

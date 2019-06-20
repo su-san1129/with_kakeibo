@@ -1,6 +1,10 @@
 <div class="nested-fields">
   <div class="form-group">
     <div class="field">
+      <%= f.label :fixed_cost_name, "項目名" %>
+      <%= f.text_field :fixed_cost_name, class: "form-control" %>
+    </div>
+    <div class="field">
       <%= f.label :fixed_cost_price, "金額" %>
       <%= f.text_field :fixed_cost_price, class: "form-control" %>
     </div>

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'relationships/create'
-  get 'relationships/destroy'
+  
   root to: "top#index"
   devise_for :users
 
