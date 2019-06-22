@@ -13,6 +13,7 @@
   position: relative;
 }
 
+
 .vertical-writing,.vertical-writing2,.vertical-writing3{
   writing-mode: vertical-rl;
   position: absolute;
@@ -30,6 +31,20 @@
   right: 300px;
 }
 
+@media screen and (max-width:768px) {
+  .vertical-writing,.vertical-writing2,.vertical-writing3{
+    font-size: 45px;
+  }
+  .vertical-writing{
+    top: 150px;
+  }
+  .vertical-writing2{
+    top: 200px;
+  }
+  .vertical-writing3{
+    top: 250px;
+  }
+}
 
 
 
@@ -52,6 +67,12 @@
 }
 .hover-button2{
   border:2px solid  #34495e;
+}
+
+@media screen and (max-width:768px) {
+  .hover-button, .hover-button2{
+    left: 0px;
+  }
 }
 
 .hover-button .block-button{
@@ -165,6 +186,18 @@
 
 .puton-color{
   color: #fff;
+}
+
+@media screen and (max-width:768px) {
+  .about-headline{
+    font-size: 25px;
+  }
+  .about-text-normal{
+    font-size: 18px;
+  }
+  .puton-color{
+  color: #000;
+  }
 }
 
 /*新規登録*/
