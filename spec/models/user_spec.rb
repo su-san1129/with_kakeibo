@@ -1,38 +1,44 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
-  it "ユーザーは、name,email,passwordがあれば有効な状態。" do
-    user = User.new(
-      name: "sample",
-      email: "sample@sample.com",
-      password: "password"
-      )
-    expect(user).to be_valid
-  end
+    before do
+      @user = build(:user)
+    end
 
-  it "名前がなければ無効な状態である。" do
-    user = User.new(name: nil)
-    user.valid?
-    expect(user.errors[:name]).to include("can't be blank")
-  end
+    context "バリデーション" do
 
-  it "メールアドレスがなければ無効な状態であること" do
-    user = User.new(email: nil)
-    user.valid?
-    expect(user.errors[:email]).to include("can't be blank")
+    it "ユーザーは、name,email,passwordがあれば有効な状態。" do
+      expect(@user.valid?).to eq(true)
+    end
+
+    it "名前がなければ無効な状態である。" do
+      @user.name = ""
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "emailがなければ無効な状態である。" do
+      @user.email = ""
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "名前は2文字以上である。" do
+      @user.name = "a"
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "名前は50文字以内である。" do
+      @user.name = "aaaa"*15
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "自己紹介(introduction)は50文字以内である。" do
+      @user.introduction = "aaaa"*15
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "emailは正規表現にマッチするか" do
+      @user.email = "aaa@a.a.a"
+      expect(@user.email).to match(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+    end
+
   end
-  # 重複したメールアドレスなら無効な状態であること
-  it "重複したメールアドレスなら無効な状態であること" do
-    user.create(
-      name: "sample",
-      email: "sample@sample.com",
-      password: "password"
-      )
-    user = User.new(
-      name: "sample",
-      email: "sample@sample.com",
-      password: "password"
-      )
-  end
-  # ユーザーのフルネームを文字列として返すこと
-  it "returns a user's full name as a string"
 end
