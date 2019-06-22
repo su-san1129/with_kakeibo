@@ -7,6 +7,9 @@ class VariableCost < ApplicationRecord
 	after_validation :geocode, if: :address_changed?
 	attachment :cost_image
 
+	# バリデーション
+	validates :price, presence: true
+
 	def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
