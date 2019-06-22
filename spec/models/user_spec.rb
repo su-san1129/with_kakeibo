@@ -4,6 +4,48 @@ RSpec.describe User, type: :model do
       @user = build(:user)
     end
 
+    # context 'アソシエーション' do
+    #   it "variable_costモデルを多数持っている" do
+    #     is_expected.to have_many(:variable_costs)
+    #   end
+
+    #   it "incomeモデルを多数持っている" do
+    #     is_expected.to have_many(:incomes)
+    #   end
+
+    #   it "cost_commentモデルを持っている" do
+    #     is_expected.to have_many(:cost_comments)
+    #   end
+
+    #   it "active_relationshipsを多数持っている" do
+    #     is_expected.to have_many(:active_relationships)
+    #   end
+
+    #   it "passive_relationshipsを多数持っている" do
+    #     is_expected.to have_many(:passive_relationships)
+    #   end
+
+    #   it "followingsを多数持っている" do
+    #     is_expected.to have_many(:followings)
+    #   end
+
+    #   it "followersを多数持っている" do
+    #     is_expected.to have_many(:followers)
+    #   end
+
+    #   it "favoriteモデルを多数持っている" do
+    #     is_expected.to have_many(:favorites)
+    #   end
+
+    #   it "fixed_costモデルを多数持っている" do
+    #     is_expected.to has_many(:fixed_costs)
+    #   end
+
+    #    it "categoryモデルを持っている" do
+    #     is_expected.to have_many(:categories)
+    #   end
+    # end
+
     context "バリデーション" do
 
     it "ユーザーは、name,email,passwordがあれば有効な状態。" do

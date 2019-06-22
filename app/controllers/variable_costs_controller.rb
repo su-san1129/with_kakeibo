@@ -13,16 +13,18 @@ class VariableCostsController < ApplicationController
 
 	def create
 		@variable_cost = VariableCost.new(variable_cost_params)
-
-		respond_to do |format|
-	    if @variable_cost.save
-	      format.html { redirect_to user_path(current_user.id), notice: '入力が完了しました！' }
-	      format.json { render json: @variable_cost }
-	    else
-	      format.html { render "users/index" }
-	      # format.json { render json: @variable_cost.errors, status: :unprocessable_entity }
-	    end
-	  end
+    if @variable_cost.save
+    	redirect_to user_path(current_user.id), notice: '入力が完了しました！'
+    else
+    	@user = current_user
+    	@variable_costs = @user.variable_costs.order(created_at: :desc)
+    	@income = Income.new
+    	@fixed_costs = @user.fixed_costs
+    	@categories = @user.variable_costs.joins(:category).group("categories.category").count
+    	@category = Category.new
+			render 'users/show', notice: "保存に失敗しました。"
+      # format.json { render json: @variable_cost.errors, status: :unprocessable_entity }
+    end
   end
 
 	def edit

@@ -1,3 +1,14 @@
+<% if @variable_cost.errors.any? %>
+  <div class="alert alert-danger">
+    <p><strong><%= pluralize(@variable_cost.errors.count, "件") %> の未入力があります。</strong></p>
+
+    <ul>
+    <% @variable_cost.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for @variable_cost do |f| %>
 	<%= f.label :price, "使った金額" %>
 	<%= f.text_field :price, class: "form-control" %>
@@ -20,5 +31,5 @@
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.label :address, "使った場所" %>
   <%= f.text_field :address, placeholder: "使った場所を入力。", class: "form-control" %>
-	<%= f.submit "投稿", class: "form-control btn btn-primary my-2" %>
+	<%= f.submit "投稿", class: "form-control btn btn-warning my-2" %>
 <% end %>

@@ -1,6 +1,6 @@
 <div class="row user-backgroud mb-5">
 	<div class="col-sm-3">
-		<%= render 'profile_bar' %>
+		<%= render 'users/profile_bar' %>
 	</div>
 
 
@@ -72,7 +72,7 @@
 						<% if @income_price.present? && balance_price < 0 %>
 							<div class="card-header"><i class="fas fa-money-bill-wave"></i>今月の給料</div>
 							<div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
-							<div class="card-title">今月の残額</div>
+							<div class="card-header"><i style="color:#ffd900;" class="fas fa-hand-holding-usd icons"></i>今月の残額</div>
 							<h2 class="card-text">￥<span class="text-danger"><%= number_with_delimiter(balance_price) %></span></h2>
 						<% elsif @income_price.present? %>
 						<div class="card-header"><i style="color:#ffd900;" class="fas fa-money-bill-wave icons"></i>今月の給料</div>
@@ -101,11 +101,12 @@
 								</li>
 								<% end %>
 							</ul>
-							<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
+
 							<div class="card-footer">
 								<strong>固定費用（合計）</strong>：<%= fixed_sum_price %>
 							</div>
 						</div>
+						<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
 					</div>
 				</div>
 			<% else %>

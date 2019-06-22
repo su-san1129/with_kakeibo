@@ -6,7 +6,7 @@
 				<div class="row text-center">
 					<% @users.each do |user| %>
 						<div class="col-sm-4">
-							<div class="card mb-3">
+							<div style=" height: 260px; "class="card mb-3">
 								<%#= link_to user, class: "card mb-3" do %>
 						    <div class="card-body">
 						      <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60,
@@ -27,7 +27,7 @@
 							</div>
 						</div>
 					<% end %>
-					<div class="offset-3 my-3"><%= paginate @users %></div>
+					<div class="offset-3 my-2"><%= paginate @users %></div>
 				</div>
 			</div>
 		</div>
