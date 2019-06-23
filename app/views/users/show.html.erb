@@ -42,7 +42,7 @@
 											<li class="list-group-item">金額：￥<%= number_with_delimiter(v.price) %></li>
 											<li class="list-group-item">支払日：<%= v.payment_day.strftime('%Y/%m/%d') %></li>
 										</ul>
-										<%= link_to "削除", variable_cost_path(v.id), method: :delete, class:"btn btn-secondary btn-sm my-1" %></p>
+										<%= link_to "削除", variable_cost_path(v.id), method: :delete, class:"offset-9 btn btn-secondary btn-sm my-1" %></p>
 										<p></p>
 									</div>
 								</div>
