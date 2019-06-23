@@ -6,7 +6,7 @@
 
 .main-visual {
 	padding-top: 0px;
-	background: url(top_background_image.jpg);
+	background: url(/images/top_background_image.jpg);
 	background-size: cover;
 	background-position: 50% 50%;
 	height: 650px;
@@ -138,7 +138,7 @@
 /*　about-contentのCSS　*/
 
 .about-body{
-  background: url(about_background_image.jpg);
+  background: url(/images/about_background_image.jpg);
   background-size: cover;
   background-position: 50% 50%;
   height: 100vh;
@@ -211,7 +211,7 @@
 
 .login-body{
     padding-top: 0px;
-    background: url(login_background_image.jpg);
+    background: url(/images/login_background_image.jpg);
     background-size: cover;
     height: 550px;
     background-position: bottom;
