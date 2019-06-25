@@ -12,6 +12,17 @@
         </button>
       </div>
       <div class="modal-body">
+        <% if @income.errors.any? %>
+          <div class="alert alert-danger">
+            <p><strong><%= pluralize(@income.errors.count, "件") %> の未入力があります。</strong></p>
+
+            <ul>
+            <% @income.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
       	<div class="form-group">
 					<%= form_for @income do |f| %>
 						<%= f.label :payday, "給料日" %>
