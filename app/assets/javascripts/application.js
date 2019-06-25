@@ -86,16 +86,3 @@ $(function(){
         $(this).next('.custom-file-label').html($(this)[0].files[0].name);
       })
   });
-
-
-// 無限スクロール
-$(window).on('scroll', function() {
-  scrollHeight = $(document).height();
-  scrollPosition = $(window).height() + $(window).scrollTop();
-  if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-        $('.jscroll').jscroll({
-          contentSelector: '.user-list',
-          nextSelector: 'span.next:last a'
-        });
-  }
-});

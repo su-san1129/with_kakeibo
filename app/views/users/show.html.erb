@@ -3,13 +3,8 @@
 		<%= render 'users/profile_bar' %>
 	</div>
 
-
+	<!-- 中央のコンテンツここから -->
 	<div class="col-sm-6">
-		<script>
-      $(function(){
-        $('.variable-fade').fadeMover();
-      });
-    </script>
 		<div class="card px-3 mb-3">
 			<%= month_calendar events: @variable_costs do |date, variable_costs| %>
 			  <%= date.day %>
@@ -54,13 +49,26 @@
 			<% else %>
 				<div class="card-body">
 					<div class="card-title">
-						投稿はまだありません。<br>
+							投稿はまだありません。<br>
 					</div>
 				</div>
 			<% end %>
 		</div>
-
+		<% if current_user.sign_in_count == 1 %>
+			<div class="card tutorial-text">
+				<div class="card-body">
+					<div class="card-text">
+						<strong><%= current_user.name %>さん</strong>、ご登録ありがとうございます！<br>
+						こちらから、サイトの使い方を確認できます。<br>
+						(※次回ログインからは表示されません。)<br>
+						<a class="btn btn-large btn-success btn-block" href="javascript:void(0);" onclick="javascript:introJs().start();">チュートリアルスタート</a>
+					</div>
+				</div>
+			</div>
+		<% end %>
 	</div>
+
+	<!-- 中央のコンテンツここまで -->
 
 	<div class="col-sm-3">
 			<%= render 'simple_calendar/chart_data' %>
@@ -86,44 +94,47 @@
 						<div><%= render 'incomes/new_modal' %></div>
 					</div>
 				</div>
+				<div data-step="2" data-intro="日々の固定費用はこちらから登録！" data-position="left">
+					<div class="card my-3">
+						<div class="card-body">
+							<div class="card-title">固定費用</div>
+							<div class="card-text">
+								<ul class="list-group list-group-flush">
+									<% @fixed_costs.each do |fixed_cost| %>
+									<li class="list-group-item">
+										<%= fixed_cost.fixed_cost_name %>：￥<%= number_with_delimiter(fixed_cost.fixed_cost_price) %>
+										<p style="font-size: 14px; color: gray;">
+											支払日:<%= fixed_cost.fixed_cost_time.strftime('%Y/%m/%d') %>
+										</p>
+									</li>
+									<% end %>
+								</ul>
 
-				<div class="card my-3">
-					<div class="card-body">
-						<div class="card-title">固定費用</div>
-						<div class="card-text">
-							<ul class="list-group list-group-flush">
-								<% @fixed_costs.each do |fixed_cost| %>
-								<li class="list-group-item">
-									<%= fixed_cost.fixed_cost_name %>：￥<%= number_with_delimiter(fixed_cost.fixed_cost_price) %>
-									<p style="font-size: 14px; color: gray;">
-										支払日:<%= fixed_cost.fixed_cost_time.strftime('%Y/%m/%d') %>
-									</p>
-								</li>
-								<% end %>
-							</ul>
-
-							<div class="card-footer">
-								<strong>固定費用（合計）</strong>：<%= fixed_sum_price %>
+								<div class="card-footer">
+									<strong>固定費用（合計）</strong>：<%= fixed_sum_price %>
+								</div>
 							</div>
+							<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
 						</div>
-						<div><%= render 'fixed_costs/fixed_cost_edit' %></div>
 					</div>
 				</div>
 			<% else %>
 			<% end %>
 
-			<div class="card my-3">
-				<div class="card-body">
-					<div class="card-title">カテゴリー</div>
-					<div class="card-text">
-						<ul class="list-group list-group-flush">
-							<% @categories.each do |category,count| %>
-							<li class="list-group-item">
-								<%= category %>(<%= count %>)
-							</li>
-							<% end %>
-						</ul>
-						<div><%= render 'categories/category_modal' %></div>
+			<div data-step="3" data-intro="ご自身だけのカテゴリー追加が可能です。">
+				<div class="card my-3">
+					<div class="card-body">
+						<div class="card-title">カテゴリー</div>
+						<div class="card-text">
+							<ul class="list-group list-group-flush">
+								<% @categories.each do |category,count| %>
+								<li class="list-group-item">
+									<%= category %>(<%= count %>)
+								</li>
+								<% end %>
+							</ul>
+							<div><%= render 'categories/category_modal' %></div>
+						</div>
 					</div>
 				</div>
 			</div>

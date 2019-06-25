@@ -12,6 +12,17 @@
         </button>
       </div>
       <div class="modal-body">
+        <% if @category.errors.any? %>
+          <div class="alert alert-danger">
+            <p><strong><%= pluralize(@category.errors.count, "件") %> の未入力があります。</strong></p>
+
+            <ul>
+            <% @category.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
       	<div class="form-group">
 					<%= form_for @category do |f| %>
 						<%= f.label :category, "カテゴリー" %>
