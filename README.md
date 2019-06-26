@@ -1,24 +1,17 @@
-# README
+# With家計簿について
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 概要
+誰かと共有しながら日々の家計簿を記録できるアプリケーションとなっております。
+他の人はどんなものにお金を使って、どういう風に節約をしているのか。
+そうしたことを共有することによって、自身のお金の使い方も見えてくるのではないかと感じ、製作に至りました。
+今まで家計簿が続かなかった人も、面倒で始めなかった人も、このwith家計簿で楽しく記録してほしいと思います。
 
-Things you may want to cover:
+# 依存関係
+Ruby           v2.5.5
+Ruby on Rails  v5.2.3
 
-* Ruby version
+# リポジトリ取得
+$ git clone git@github.com:su-san1129/with_kakeibo.git
+$ cd with_kakeibo
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 使い方
