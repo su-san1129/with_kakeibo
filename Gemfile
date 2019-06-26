@@ -48,10 +48,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # デバッグ用
   gem 'pry-byebug'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
+  # テスト用
   gem 'rspec-rails'
+  # テスト用データの生成
   gem 'factory_bot_rails'
 end
 
@@ -65,15 +68,27 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# レイアウト用
 gem 'bootstrap'
+# ウェブページに動きをつける
 gem 'jquery-rails'
+# ログイン機能
 gem 'devise'
+# ページャー機能
 gem 'kaminari'
+# カレンダー機能
 gem 'simple_calendar'
+# チャートを表示させる
 gem 'chartkick'
+# 画像をアップロードする
 gem "refile", require: "refile/rails", github: 'manfe/refile'
+# 画像をサムネイルに変換
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+# グーグルマップを表示するための緯度経度を取得
 gem 'geocoder'
+# 環境変数を管理する
 gem 'dotenv-rails'
+# IDに紐づけて複数レコードを生成をする
 gem 'cocoon'
+# 機能確認用　ユーザーを複数生成
 gem 'faker'

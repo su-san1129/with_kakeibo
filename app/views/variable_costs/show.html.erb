@@ -1,3 +1,4 @@
+<!-- グーグルマップを表示させるためのJS -->
 <script type="text/javascript">
 	function initMap() {
 
@@ -26,15 +27,16 @@
     });
 	}
 </script>
-
+<!-- グーグルマップを利用するためのAPIキー。（.envファイルで管理） -->
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
 </script>
+<!-- 画面左側のバー -->
 <div class="row sm-5">
 	<div class="col-sm-3">
 		<%= render 'users/profile_bar' %>
 	</div>
-
+<!-- 画面中央のコンテンツ　　投稿内容表示 -->
 	<div class="col-sm-5">
 		<div class="container">
 			<div class="row">
@@ -85,6 +87,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- グーグルマップの表示 -->
 	<% if @variable_cost.address.present? %>
 		<div class="col-sm-4">
 			<div class="card">
