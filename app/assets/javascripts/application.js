@@ -18,7 +18,6 @@
 //= require chartkick
 //= require Chart.bundle
 //= require cocoon
-//= require jquery.jscroll.min.js
 //= require_tree .
 
 // 固定ヘッダーを薄くする

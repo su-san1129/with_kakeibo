@@ -6,6 +6,19 @@
 */
 
 
+// top/indexの動作
+$(function(){
+  $('.fadein-write').fadeMover({
+    'effectType': 2,
+    'inSpeed': 5000,
+    'outSpeed': 800,
+    'inDelay' : '800',
+    'outDelay' : '400',
+    'nofadeOut' : 'nonmover'
+  });
+});
+// ここまで
+
 
 (function($){
 	$.fn.fadeMover = function(options) {
