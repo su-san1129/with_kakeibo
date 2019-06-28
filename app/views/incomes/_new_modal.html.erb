@@ -28,7 +28,7 @@
 						<%= f.label :payday, "給料日" %>
 						<%= f.date_select :payday, { default: Date.today }, class: "form-control bootstrap-date" %><br>
 						<%= f.label :income, "給与" %>
-						<%= f.text_field :income, class: "form-control" %>
+						<%= f.text_field :income,placeholder: "こちらに給与を登録。お仕事お疲れ様です。", class: "form-control" %>
 						<%= f.hidden_field :user_id, value: current_user.id %>
 						<%= f.submit "登録",class: "form-control col-sm-3 btn btn-outline-primary my-2" %>
 					<% end %>

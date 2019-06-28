@@ -6,7 +6,8 @@
 				<h6><%= cost_comment.user.name %></h6>
 				<p><%= cost_comment.comment %></p>
 				<% if cost_comment.user.id == current_user.id %>
-					<%= link_to "削除", variable_cost_cost_comment_path(variable_cost.id,cost_comment.id), method: :delete,remote: true, class:"btn btn-secondary btn-sm my-1" %>
+					<%= link_to "削除", variable_cost_cost_comment_path(variable_cost.id,cost_comment.id),
+					method: :delete,remote: true, class:"btn btn-secondary btn-sm my-1" %>
 				<% else %>
 				<% end %>
 			</div>

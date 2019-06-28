@@ -54,7 +54,7 @@
 				</div>
 			<% end %>
 		</div>
-		<% if current_user.sign_in_count == 1 %>
+		<% if current_user.sign_in_count == 1 && @user == current_user %>
 			<div class="card tutorial-text">
 				<div class="card-body">
 					<div class="card-text">

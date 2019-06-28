@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@categories = @user.categories
 	end
 
 	def update

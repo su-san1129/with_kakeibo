@@ -23,7 +23,6 @@ class VariableCostsController < ApplicationController
     	@categories = @user.variable_costs.joins(:category).group("categories.category").count
     	@category = Category.new
 			render 'users/show', notice: "保存に失敗しました。"
-      # format.json { render json: @variable_cost.errors, status: :unprocessable_entity }
     end
   end
 
@@ -37,7 +36,7 @@ class VariableCostsController < ApplicationController
 
 	def destroy
 		@variable_cost.destroy
-		redirect_to user_path(current_user), notice: "post was successfully destroyed"
+		redirect_to user_path(current_user), notice: "投稿を削除しました。"
 	end
 
 	private

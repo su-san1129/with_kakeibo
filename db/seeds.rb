@@ -14,16 +14,6 @@ user1 = User.create(
 	email: 'sample@sample.com'
 	)
 
-99.times do |n|
-  name = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(name:  name,
-              email:  email,
-              password:               password,
-              password_confirmation:  password
-        )
-end
 
 Category.create(category: '食費', user_id: user1.id, status: 1)
 Category.create(category: '交通費', user_id: user1.id, status: 1)

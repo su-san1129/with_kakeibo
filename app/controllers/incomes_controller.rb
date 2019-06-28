@@ -4,8 +4,6 @@ class IncomesController < ApplicationController
 		@income = Income.new(income_params)
 		if Income.find_by(user_id: current_user.id, payday: Time.now.all_month).present?
 			@income = Income.find_by(user_id: current_user.id)
-			# Income.find_by(user_id: current_user.id, payday: params[:payaday].month).present?
-			# @income = Income.find_by(user_id: current_user.id, payday: prams[:payday].month )
 			@income.update(income_params)
 			redirect_to user_path(current_user),notice: "給与を更新しました！"
 

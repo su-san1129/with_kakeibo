@@ -26,10 +26,11 @@
       	<div class="form-group">
 					<%= form_for @category do |f| %>
 						<%= f.label :category, "カテゴリー" %>
-						<%= f.text_field :category, class: "form-control" %>
+						<%= f.text_field :category, placeholder: "追加したいカテゴリー名を入力。",
+             class: "form-control" %>
 						<%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.hidden_field :status, value: 2 %>
-						<%= f.submit "登録" %>
+						<%= f.submit "登録", class: "btn btn-success col-sm-6 offset-sm-3 my-3" %>
 					<% end %>
 				</div>
 			</div>

@@ -10,7 +10,7 @@
 
         <div class="form-group">
           <%= f.label :introduction, "紹介" %>
-          <%= f.text_area :introduction, class:"form-control" %>
+          <%= f.text_area :introduction, placeholder: "紹介文は50文字以内です。", class:"form-control" %>
         </div>
 
         <div class="custom-file my-2">
@@ -20,9 +20,36 @@
         <div id="img_field" onClick="$('#file').click()" ></div>
 
         <div class="actions">
-          <%= f.submit "編集", class:"form-control col-sm-6 offset-sm-3 my-3"  %>
+          <%= f.submit "確定", class:"form-control col-sm-6 offset-sm-3 my-3"  %>
         </div>
       <% end %>
       <%= link_to "戻る", user_path(current_user), class: "btn btn-outline-dark offset-sm-11 col-sm-1" %>
   </div>
 </div>
+<% if @categories.present? %>
+  <div class="card col-sm-8 offset-sm-2 my-3">
+    <div class="card-body">
+      <h2 class="card-title">追加したカテゴリー</h2>
+      <div class="card-text">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>カテゴリー名</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @categories.each_with_index do |category, i| %>
+          <tbody>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= category.category %></td>
+              <td><%= link_to "削除", category_path(category), method: :delete,
+              class: "category-table"%></td>
+            </tr>
+          </tbody>
+          <% end %>
+        </table>
+    </div>
+  </div>
+<% end %>
