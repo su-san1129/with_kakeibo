@@ -15,13 +15,25 @@ Ruby on Rails  v5.2.3
 $ git clone git@github.com:su-san1129/with_kakeibo.git
 $ cd with_kakeibo
 ```  
-
 # 使い方
+GoogleMapAPIは、環境変数によって管理されています。
+```
+gem 'dotenv-rails'
+```
+.envファイルを作成のち
+```
+GOOGLE_MAP_API = [your_APIkey]
+```
+ご自身のAPIキーに差し替えて使用してください。  
+.envは、  
+.gitignoreに追記。
+
 ```
 $ bundle install
 $ rails db:migrate
 $ rails s
 ```
+
 1.新規登録画面から、情報を入力しログインします。  
 2.マイページ遷移後、プロフィール下の「新規投稿」から費用の記録ができます。  
 3.支出一覧に入力したデータが表示されます。  
