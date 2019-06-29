@@ -9,9 +9,9 @@ class IncomesController < ApplicationController
 
 		else
 			if @income.save
-				redirect_to user_path(current_user),notice: "給与を登録しました！"
+				redirect_to user_path(current_user), notice: "給与を登録しました！"
 			else
-				render 'users/show',notice: "保存できませんでした。"
+				redirect_to user_path(current_user), notice: "給与が未入力です。保存できませんでした。"
 			end
 		end
 	end

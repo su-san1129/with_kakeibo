@@ -1,3 +1,2 @@
 class FixedCostsController < ApplicationController
-	
 end

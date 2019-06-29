@@ -2,8 +2,11 @@ class CategoriesController < ApplicationController
 
 	def create
 		@category = Category.new(category_params)
-		@category.save
-		redirect_to user_path(current_user)
+		if @category.save
+			redirect_to user_path(current_user), notice: "カテゴリーを保存しました。"
+		else
+			redirect_to user_path(current_user), notice: "カテゴリーが未記入です。保存できませんでした。"
+		end
 	end
 
 	def destroy
