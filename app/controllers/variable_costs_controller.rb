@@ -22,7 +22,7 @@ class VariableCostsController < ApplicationController
     	@fixed_costs = @user.fixed_costs
     	@categories = @user.variable_costs.joins(:category).group("categories.category").count
     	@category = Category.new
-			render 'users/show', notice: "保存に失敗しました。"
+		    render 'users/show', notice: "保存に失敗しました。"
     end
   end
 
