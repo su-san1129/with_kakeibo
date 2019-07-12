@@ -1,0 +1,25 @@
+
+<script>
+  $(function(){
+  $('.new-registrations').fadeMover({
+    'effectType': 2,
+    'inSpeed': 2000,
+    'outSpeed': 800,
+    'inDelay' : '800',
+    'outDelay' : '0',
+    'nofadeOut' : 'nonmover'
+  });
+});
+</script>
+<div class="signup-body">
+  <div class="container">
+    <div class="row">
+      <div class="offset-sm-7 col-sm-4 card signup-card mt-5 py-4">
+        <div class="card-text">
+          <%= render "devise/registrations/new"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
