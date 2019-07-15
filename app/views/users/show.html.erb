@@ -57,7 +57,7 @@
 		<div class="container">
 
 			<% if @user == current_user %>
-				<div class="card">
+				<div class="card income_content">
 					<div class="card-body text-center">
 						<% if @income_price.present? && balance_price < 0 %>
 							<div class="card-header"><i class="fas fa-money-bill-wave"></i>今月の給料</div>

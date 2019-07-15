@@ -38,7 +38,9 @@ class VariableCostsController < ApplicationController
 
 	def destroy
 		@variable_cost.destroy
-		redirect_to user_path(current_user), notice: "投稿を削除しました。"
+		@user = current_user
+		@variable_costs = @user.variable_costs.order(created_at: :desc)
+		# redirect_to user_path(current_user), notice: "投稿を削除しました。"
 	end
 
 	private
