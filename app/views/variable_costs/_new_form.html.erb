@@ -10,16 +10,16 @@
   </div>
 <% end %>
 <div data-step="1" data-intro="こちらから、支出の記録ができます！" data-position="right">
-	<%= form_for @variable_cost do |f| %>
+	<%= form_for @variable_cost, remote: true do |f| %>
 		<%= f.label :price, "使った金額" %>
-		<%= f.text_field :price, class: "form-control" %>
+		<%= f.text_field :price, class: "form-control variable_form" %>
 		<%= f.label :category_id, "カテゴリーを選択" %>
 		<%= f.collection_select :category_id,
 			Category.where(user_id: current_user.id)
 			.or(Category.where(status: 1)), :id, :category,{},
 			{class: "form-control"} %>
 		<%= f.label :opinion, "内容" %>
-		<%= f.text_area :opinion, placeholder: "詳細情報を記入。必須ではありません。", class: "form-control" %>
+		<%= f.text_area :opinion, placeholder: "詳細情報を記入。必須ではありません。", class: "form-control variable_form" %>
 		<div style="clearfix">
 			<%= f.label :payment_day, "日付" %>
 		</div>
@@ -31,7 +31,7 @@
 		<div id="img_field" onClick="$('#file').click()" ></div>
 		<%= f.hidden_field :user_id, value: current_user.id %>
 		<%= f.label :address, "使った場所" %>
-	  <%= f.text_field :address, placeholder: "使った場所を入力。", class: "form-control" %>
+	  <%= f.text_field :address, placeholder: "使った場所を入力。", class: "form-control variable_form" %>
 		<%= f.submit "投稿", class: "form-control btn btn-warning my-2" %>
 	<% end %>
 </div>

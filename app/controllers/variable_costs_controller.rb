@@ -13,8 +13,10 @@ class VariableCostsController < ApplicationController
 
 	def create
 		@variable_cost = VariableCost.new(variable_cost_params)
-    if @variable_cost.save
-    	redirect_to user_path(current_user.id), notice: '入力が完了しました！'
+	if @variable_cost.save
+		@user = current_user
+		@variable_costs = @user.variable_costs.order(created_at: :desc)
+    	# redirect_to user_path(current_user.id), notice: '入力が完了しました！'
     else
     	@user = current_user
     	@variable_costs = @user.variable_costs.order(created_at: :desc)
