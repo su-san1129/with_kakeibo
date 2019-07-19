@@ -1,0 +1,17 @@
+<div class="card-body text-center">
+  <% if @income_price.present? && balance_price < 0 %>
+    <div class="card-header"><i class="fas fa-money-bill-wave"></i>今月の給料</div>
+    <div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+    <div class="card-header"><i style="color:#ffd900;" class="fas fa-hand-holding-usd icons"></i>今月の残額</div>
+    <h2 class="card-text">￥<span class="text-danger"><%= number_with_delimiter(balance_price) %></span></h2>
+  <% elsif @income_price.present? %>
+    <div class="card-header"><i style="color:#ffd900;" class="fas fa-money-bill-wave icons"></i>今月の給料</div>
+    <div class="card-text">￥<%= number_with_delimiter(@income_price.income) %></div>
+    <div class="card-header"><i style="color:#ffd900;" class="fas fa-hand-holding-usd icons"></i>今月の残額</div>
+    <div class="card-text">￥<%= number_with_delimiter(balance_price) %></div>
+  <% else %>
+    <div class="card-title">今月の給料</div>
+    <div class="card-text">登録はまだありません。</div>
+  <% end %>
+  <div><%= render 'incomes/new_modal' %></div>
+</div>

@@ -16,6 +16,8 @@ class VariableCostsController < ApplicationController
 	if @variable_cost.save
 		@user = current_user
 		@variable_costs = @user.variable_costs.order(created_at: :desc)
+		@income = Income.new
+		flash[:success] = '入力が完了しました！'
     	# redirect_to user_path(current_user.id), notice: '入力が完了しました！'
     else
     	@user = current_user
