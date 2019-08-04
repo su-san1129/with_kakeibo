@@ -54,13 +54,16 @@
 				</div>
 			<% end %>
 		</div>
-		<% if current_user.sign_in_count == 1 && @user == current_user %>
+		<% if current_user.sign_in_count == 1 && @user == current_user || @user.name == "sample太郎" %>
 			<div class="card tutorial-text">
 				<div class="card-body">
 					<div class="card-text">
 						<strong><%= current_user.name %>さん</strong>、ご登録ありがとうございます！<br>
 						こちらから、サイトの使い方を確認できます。<br>
 						(※次回ログインからは表示されません。)<br>
+						<% if @user.name == 'sample太郎'%>
+							<p>テストログイン時のみ、常に表示されます。通常は、初回のみしか表示されません。</p>
+						<% end %>
 						<a class="btn btn-large btn-success btn-block" href="javascript:void(0);" onclick="javascript:introJs().start();">チュートリアルスタート</a>
 					</div>
 				</div>

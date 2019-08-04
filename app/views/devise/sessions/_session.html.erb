@@ -21,3 +21,11 @@
     <%= f.submit "ログイン", class: "form-control" %>
   </div>
 <% end %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.hidden_field :email, value: "sample@sample.com", class: "form-control" %>
+    <%= f.hidden_field :password, value: "password", autocomplete: "current-password", class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "テストログイン", class: "form-control my-3" %>
+  </div>
+<% end %>
