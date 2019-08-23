@@ -1,5 +1,7 @@
-class Income < ApplicationRecord
-	belongs_to :user
+# frozen_string_literal: true
 
-	validates :income, presence: true
+class Income < ApplicationRecord
+  belongs_to :user
+
+  validates :income, presence: true
 end

@@ -1,18 +1,19 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
-  root to: "top#index"
+Rails.application.routes.draw do
+  root to: 'top#index'
   devise_for :users
 
-  resources :users, only: [:index, :show, :edit, :update, :destroy] do
-    resource :relationships, only: [:create, :destroy]
+  resources :users, only: %i[index show edit update destroy] do
+    resource :relationships, only: %i[create destroy]
     get :follows, on: :member
     get :followers, on: :member
   end
-  resources :variable_costs, only: [:index, :show, :edit, :create, :update, :destroy] do
-  	resources :cost_comments, only: [:create, :destroy]
-  	resource :favorites, only: [:create, :destroy]
+  resources :variable_costs, only: %i[index show edit create update destroy] do
+    resources :cost_comments, only: %i[create destroy]
+    resource :favorites, only: %i[create destroy]
   end
-  resources :categories, only: [:create, :update, :destroy]
-  resources :incomes, only: [:create, :update, :destroy]
+  resources :categories, only: %i[create update destroy]
+  resources :incomes, only: %i[create update destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
