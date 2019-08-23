@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -38,13 +40,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -67,7 +69,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # レイアウト用
 gem 'bootstrap'
 # ウェブページに動きをつける
@@ -81,9 +83,9 @@ gem 'simple_calendar'
 # チャートを表示させる
 gem 'chartkick'
 # 画像をアップロードする
-gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 # 画像をサムネイルに変換
-gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+gem 'refile-mini_magick', github: 'refile/refile-mini_magick'
 # グーグルマップを表示するための緯度経度を取得
 gem 'geocoder'
 # 環境変数を管理する
@@ -92,6 +94,8 @@ gem 'dotenv-rails'
 gem 'cocoon'
 # 機能確認用　ユーザーを複数生成
 gem 'faker'
+# 脆弱性が見つかったためversion up
+gem 'nokogiri', ">= 1.10.4"
 
 # ============デプロイ用========
 # gem 'json'

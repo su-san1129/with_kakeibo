@@ -1,6 +1,7 @@
-module TopHelper
+# frozen_string_literal: true
 
-	def resource_name
+module TopHelper
+  def resource_name
     :user
   end
 
@@ -15,5 +16,4 @@ module TopHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
-
 end
