@@ -95,7 +95,7 @@ gem 'cocoon'
 # 機能確認用　ユーザーを複数生成
 gem 'faker'
 # 脆弱性が見つかったためversion up
-gem 'nokogiri', ">= 1.10.4"
+gem 'nokogiri', '>= 1.10.4'
 
 # ============デプロイ用========
 # gem 'json'
