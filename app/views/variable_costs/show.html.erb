@@ -1,7 +1,6 @@
 <!-- グーグルマップを表示させるためのJS -->
 <script type="text/javascript">
 	function initMap() {
-
     var gmap = {lat: <%= @variable_cost.latitude %>, lng: <%= @variable_cost.longitude %>};
     var map = new google.maps.Map(document.getElementById('map'), {
       center: gmap,
@@ -29,93 +28,90 @@
 </script>
 <!-- グーグルマップを利用するためのAPIキー。（.envファイルで管理） -->
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
 </script>
 <!-- 画面左側のバー -->
 <div class="row sm-5">
-	<div class="col-sm-3">
-		<%= render 'users/profile_bar' %>
-	</div>
-<!-- 画面中央のコンテンツ　　投稿内容表示 -->
-	<div class="col-sm-5">
-		<div class="container">
-			<div class="row">
-		    <div class="card img-thumbnail">
-		     <%= attachment_image_tag @variable_cost, :cost_image, :fill, 550, 400, class: "card-img-top img-fluid", fallback: "/images/no_image.png" %>
-		      <div class="card-body px-2 py-3">
-		        <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
-		        <div class="card-text">
-		        	<p>金額：<%= @variable_cost.price %></p>
-		        	<p>内容：<%= @variable_cost.opinion %></p>
-		        </div>
+  <div class="col-sm-3">
+    <%= render 'users/profile_bar' %>
+  </div>
+  <!-- 画面中央のコンテンツ　　投稿内容表示 -->
+  <div class="col-sm-5">
+    <div class="container">
+      <div class="row">
+        <div class="card img-thumbnail">
+          <%= attachment_image_tag @variable_cost, :cost_image, :fill, 550, 400, class: "card-img-top img-fluid", fallback: "/images/no_image.png" %>
+          <div class="card-body px-2 py-3">
+            <h5 class="card-title">カテゴリー：<%= @variable_cost.category.category %></h5>
+            <div class="card-text">
+              <p>金額：<%= @variable_cost.price %></p>
+              <p>内容：<%= @variable_cost.opinion %></p>
+            </div>
 
-		       <!--  ファボはここから -->
-			      <div id="favorites_<%= @variable_cost.id %>">
-	          	<%= render 'favorites/favorites', variable_cost: @variable_cost %>
-	          </div>
-						<!-- ここまで -->
+            <!--  ファボはここから -->
+            <div id="favorites_<%= @variable_cost.id %>">
+              <%= render 'favorites/favorites', variable_cost: @variable_cost %>
+            </div>
+            <!-- ここまで -->
 
-						<!-- コメントのカウント -->
-						<div style="margin-left: 40px" class="comment-group">
-							<i class="fa fa-comment-alt faa-bounce animated-hover"></i>
-					  	<a href="#comments"><%= @variable_cost.cost_comments.count %></a>
-					  </div>
-					  <!-- コメントのカウントここまで -->
+            <!-- コメントのカウント -->
+            <div style="margin-left: 40px" class="comment-group">
+              <i class="fa fa-comment-alt faa-bounce animated-hover"></i>
+              <a href="#comments"><%= @variable_cost.cost_comments.count %></a>
+            </div>
+            <!-- コメントのカウントここまで -->
 
-						<!-- コメントのリスト -->
-						<% if @variable_cost.cost_comments.present? %>
-							<p>コメント一覧</p>
-						<% end %>
-					  <ul class="list-group list-group-flush">
-					  	<%= render 'cost_comments/comment', variable_cost: @variable_cost %>
-					  </ul>
-					 <!--  リストここまで -->
+            <!-- コメントのリスト -->
+            <% if @variable_cost.cost_comments.present? %>
+              <p>コメント一覧</p>
+            <% end %>
+            <ul class="list-group list-group-flush">
+              <%= render 'cost_comments/comment', variable_cost: @variable_cost %>
+            </ul>
+            <!--  リストここまで -->
 
-					 <!-- コメントはここから -->
-					  <%= form_for [@variable_cost, @cost_comment],remote:true do |f| %>
-					    <div class="row">
-				        <div class="col-sm-12">
-				          <%= f.text_area :comment, rows:'5', class: "form-control post-comment",placeholder: "コメントをここに" %>
-				        </div>
-					    </div>
-					    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-						<% end %>
-						<!-- コメントはここまで -->
-		      </div>
-		    </div>
-			</div>
-		</div>
-	</div>
+            <!-- コメントはここから -->
+            <%= form_for [@variable_cost, @cost_comment],remote:true do |f| %>
+              <div class="row">
+                <div class="col-sm-12">
+                  <%= f.text_area :comment, rows:'5', class: "form-control post-comment",placeholder: "コメントをここに" %>
+                </div>
+              </div>
+              <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+            <% end %>
+            <!-- コメントはここまで -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<!-- グーグルマップの表示 -->
-	<% if @variable_cost.address.present? %>
-		<div class="col-sm-4">
-			<div class="card">
-				<p>
-				  <strong>住所:</strong>
-				  <%= @variable_cost.address %>
-				</p>
-				<p>
-				  <strong>緯度:</strong>
-				  <%= @variable_cost.latitude %>
-				</p>
-				<p>
-				  <strong>経度:</strong>
-				  <%= @variable_cost.longitude %>
-				</p>
-				<div id="map"></div>
-	    </div>
-		</div>
-	<% else %>
-		<div class="col-sm-4">
-			<div class="card">
-				<div class="card-body">
-					<div class="card-text">
-						住所を登録するとここに表示されます。
-						<br>
-					</div>
-				</div>
-			</div>
-		</div>
-	<% end %>
+  <!-- グーグルマップの表示 -->
+  <% if @variable_cost.address.present? %>
+    <div class="col-sm-4">
+      <div class="card">
+        <p>
+          <strong>住所:</strong>
+          <%= @variable_cost.address %>
+        </p>
+        <p>
+          <strong>緯度:</strong>
+          <%= @variable_cost.latitude %>
+        </p>
+        <p>
+          <strong>経度:</strong>
+          <%= @variable_cost.longitude %>
+        </p>
+        <div id="map"></div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-text">住所を登録するとここに表示されます。<br></div>
+        </div>
+      </div>
+   </div>
+  <% end %>
 </div>
