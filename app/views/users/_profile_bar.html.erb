@@ -1,54 +1,54 @@
 <% if @user == current_user %>
-<div class="container">
-	<div class="card mb-3">
-    <div class="card-body text-center">
-      <p><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
-      <h4 class="card-title"><%= current_user.name %> さん</h4>
-      <div class="card-text">
-        <p><%= current_user.introduction %></p>
-        <%= link_to "編集", edit_user_path(current_user), class: "btn btn-outline-dark" %>
+  <div class="container">
+    <div class="card mb-3">
+      <div class="card-body text-center">
+        <p><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
+        <h4 class="card-title"><%= current_user.name %> さん</h4>
+        <div class="card-text">
+          <p><%= current_user.introduction %></p>
+          <%= link_to "編集", edit_user_path(current_user), class: "btn btn-outline-dark" %>
+        </div>
+      </div>
+      <ul class="list-group list-group-horizontal">
+        <%= link_to follows_user_path(@user), class:"list-group-item list-group-item-action flex-fill" do %>
+          フォロー　（<%= @user.followings.count %>）
+        <% end %>
+        <%= link_to followers_user_path(@user), class:"list-group-item list-group-item-action flex-fill" do %>
+          フォロワ（<%= @user.followers.count %>）
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- 支出の新規登録ページ -->
+    <div class="card mb-5">
+      <div class="card-body">
+        <% if current_page?(user_path(current_user))%>
+          <div class="card-title variable-cost-post">新規投稿</div>
+        <% else %>
+          <div class="card-title variable-cost-post">投稿データを編集</div>
+        <% end %>
+        <div class="card-text">
+          <div class="form-group">
+            <!--  フォームのみパーシャルで分離 -->
+            <%= render 'variable_costs/new_form' %>
+          </div>
+        </div>
       </div>
     </div>
-    <ul class="list-group list-group-horizontal">
-      <%= link_to follows_user_path(@user), class:"list-group-item list-group-item-action flex-fill" do %>
-        フォロー　（<%= @user.followings.count %>）
-      <% end %>
-      <%= link_to followers_user_path(@user), class:"list-group-item list-group-item-action flex-fill" do %>
-        フォロワ（<%= @user.followers.count %>）
-      <% end %>
-    </ul>
   </div>
-
-  <!-- 支出の新規登録ページ -->
-  <div class="card mb-5">
-  	<div class="card-body">
-      <% if current_page?(user_path(current_user))%>
-  		  <div class="card-title variable-cost-post">新規投稿</div>
-      <% else %>
-        <div class="card-title variable-cost-post">投稿データを編集</div>
-      <% end %>
-  		<div class="card-text">
-  			<div class="form-group">
-         <!--  フォームのみパーシャルで分離 -->
-  				<%= render 'variable_costs/new_form' %>
-  			</div>
-  		</div>
-  	</div>
-  </div>
-</div>
 <% else %>
   <!-- カレントユーザーでない場合 -->
   <div class="container">
-  	<div class="card mb-3">
+    <div class="card mb-3">
       <div class="card-body text-center">
         <p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
         <h4 class="card-title"><%= @user.name %> さん</h4>
         <div class="card-text">
           <p><%= @user.introduction %></p>
           <% if @user.followed_by?(current_user) %>
-              <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary btn-sm" %></p>
+            <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary btn-sm" %></p>
           <% else %>
-              <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-outline-primary btn-sm" %></p>
+            <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-outline-primary btn-sm" %></p>
           <% end %>
         </div>
       </div>
