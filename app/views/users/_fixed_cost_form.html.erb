@@ -1,7 +1,7 @@
 <%= form_for @user do |f| %>
-	<%= f.fields_for :fixed_costs do |fixed_cost| %>
-	 	<%= render 'users/fixed_costs_fields', :f => fixed_cost %>
-	<% end %>
+  <%= f.fields_for :fixed_costs do |fixed_cost| %>
+    <%= render 'users/fixed_costs_fields', :f => fixed_cost %>
+  <% end %>
   <div class='links text-right'>
     <%= link_to_add_association '追加', f, :fixed_costs, partial: "users/fixed_costs_fields", class:"btn btn-primary btn-sm my-1"%>
   </div>

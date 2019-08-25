@@ -12,7 +12,7 @@
                   class: "rounded-circle img-fluid", fallback: "no_image.png" ,size: "100x100" %></p>
                   <h4 class="card-title"><%= link_to user.name, user_path(user) %></h4>
                   <div class="card-text">
-                  <p><%= truncate(user.introduction,length:20) %></p>
+                    <p><%= truncate(user.introduction,length:20) %></p>
                     <% if current_user != user %>
                       <% if user.followed_by?(current_user) %>
                         <p><%=link_to_if user.followed_by?(current_user), "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn btn-primary btn-sm" %></p>
