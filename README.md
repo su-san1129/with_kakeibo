@@ -31,7 +31,7 @@ GOOGLE_MAP_API = [your_APIkey]
 ```
 $ bundle install
 $ rails db:migrate
-$ rails s
+$ rails s  // 環境によっては rails s -b 0.0.0.0
 ```
 
 1.新規登録画面から、情報を入力しログインします。  
