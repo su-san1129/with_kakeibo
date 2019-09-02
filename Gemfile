@@ -103,4 +103,5 @@ gem 'nokogiri', '>= 1.10.4'
 # gem 'listen', '>= 3.0.5', '< 3.2'
 # refileに導入しているimage_processingが2.4から対応のため
 # gem 'image_processing','1.8.0'
+# gem 'google-analytics-rails'
 # ===========ここまで=============
