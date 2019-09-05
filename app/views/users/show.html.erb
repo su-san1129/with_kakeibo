@@ -125,8 +125,8 @@
             <div class="card-title">カテゴリー</div>
             <div class="card-text">
               <ul class="list-group list-group-flush">
-                <% @categories.each do |category,count| %>
-                  <li class="list-group-item"><%= category %>(<%= count %>)</li>
+                <% @categories.each do |category| %>
+                  <li class="list-group-item"><%= category.category_name %>(<%= category.category_count %>)</li>
                 <% end %>
               </ul>
               <div><%= render 'categories/category_modal' %></div>

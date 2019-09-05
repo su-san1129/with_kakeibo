@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
+  
   def create
     @category = Category.new(category_params)
     @category.save

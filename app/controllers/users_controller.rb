@@ -16,7 +16,13 @@ class UsersController < ApplicationController
     @income_price = Income.find_by(user_id: current_user.id, payday: Time.now.all_month)
     @fixed_costs = @user.fixed_costs
     @category = Category.new
-    @categories = @user.variable_costs.joins(:category).group('categories.category').count
+    @categories = @user.variable_costs
+                   .joins(:category)
+                   .select("variable_costs.id, 
+                            category_id,
+                            count(categories.category) as category_count,
+                            categories.category as category_name")
+                   .group(:category_id)
     @chart_data = @user.variable_costs.joins(:category).group('categories.category').sum(:price)
   end
 
