@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :cost_comments, only: %i[create destroy]
     resource :favorites, only: %i[create destroy]
   end
-  resources :categories, only: %i[create update destroy]
+  resources :categories, only: %i[show create update destroy]
   resources :incomes, only: %i[create update destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

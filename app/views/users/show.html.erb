@@ -126,7 +126,7 @@
             <div class="card-text">
               <ul class="list-group list-group-flush">
                 <% @categories.each do |category| %>
-                  <li class="list-group-item"><%= category.category_name %>(<%= category.category_count %>)</li>
+                  <li class="list-group-item"><%= link_to category.category_name, category_path(category.category_id) %>(<%= category.category_count %>)</li>
                 <% end %>
               </ul>
               <div><%= render 'categories/category_modal' %></div>
