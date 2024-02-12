@@ -25,7 +25,7 @@
     </div>
     <%= f.date_select :payment_day, { default: Date.today }, class: "form-control bootstrap-date" %>
     <div class="custom-file my-2">
-      <%= f.attachment_field :cost_image, class: "custom-file-input", id: "file" %>
+      <%# <%= f.attachment_field :cost_image, class: "custom-file-input", id: "file" %> %>
       <label class="custom-file-label" for="file" data-browse="参照">ファイル選択...</label>
     </div>
     <div id="img_field" onClick="$('#file').click()" ></div>
