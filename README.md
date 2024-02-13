@@ -7,14 +7,9 @@
 今まで家計簿が続かなかった人も、面倒で始めなかった人も、このwith家計簿で楽しく記録してほしいと思います。
 
 # 依存関係
-Ruby           v2.5.5  
-Ruby on Rails  v5.2.3
+Ruby           v2.7.8
+Ruby on Rails  v5.2.8.1
 
-# リポジトリ取得
-```
-$ git clone git@github.com:su-san1129/with_kakeibo.git
-$ cd with_kakeibo
-```  
 # 使い方
 GoogleMapAPIは、環境変数によって管理されています。
 ```
@@ -31,7 +26,7 @@ GOOGLE_MAP_API = [your_APIkey]
 ```
 $ bundle install
 $ rails db:migrate
-$ rails s  // 環境によっては rails s -b 0.0.0.0
+$ rails s
 ```
 
 1.新規登録画面から、情報を入力しログインします。  
@@ -39,7 +34,5 @@ $ rails s  // 環境によっては rails s -b 0.0.0.0
 3.支出一覧に入力したデータが表示されます。  
 他にもマイページから「給与」「固定費用」「カテゴリー」などの登録が可能なため、  
 ライフスタイルに合わせてカスタマイズが出来ます。  
-
-URL: https://withkakeibo.tokyo
 
 
