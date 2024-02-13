@@ -5,154 +5,157 @@
 /*　main-visualのCSS　*/
 
 .main-visual {
-	padding-top: 0px;
-	background: url(/images/top_background_image.jpg);
-	background-size: cover;
-	background-position: 50% 50%;
-	height: 650px;
+  padding-top: 0px;
+  background: url(/images/top_background_image.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 650px;
   position: relative;
 }
 
-
-.vertical-writing,.vertical-writing2,.vertical-writing3{
+.vertical-writing,
+.vertical-writing2,
+.vertical-writing3 {
   writing-mode: vertical-rl;
   position: absolute;
   font-size: 60px;
-  font-family:  "游明朝","Yu Mincho","Tsukushi B Round Gothic","筑紫B丸ゴシック";
+  font-family: "游明朝", "Yu Mincho", "Tsukushi B Round Gothic",
+    "筑紫B丸ゴシック";
   font-weight: bold;
   pointer-events: none;
 }
-.vertical-writing{
+.vertical-writing {
   top: 50px;
   right: 0px;
 }
-.vertical-writing2{
+.vertical-writing2 {
   top: 150px;
   right: 150px;
 }
-.vertical-writing3{
+.vertical-writing3 {
   top: 200px;
   right: 300px;
 }
 
-@media screen and (max-width:768px) {
-  .vertical-writing,.vertical-writing2,.vertical-writing3{
+@media screen and (max-width: 768px) {
+  .vertical-writing,
+  .vertical-writing2,
+  .vertical-writing3 {
     font-size: 45px;
   }
-  .vertical-writing{
+  .vertical-writing {
     top: 150px;
   }
-  .vertical-writing2{
+  .vertical-writing2 {
     top: 200px;
   }
-  .vertical-writing3{
+  .vertical-writing3 {
     top: 250px;
   }
 }
 
-
-
-.hover-button,.hover-button2{
-  width:140px;
-  height:50px;
-  float:left;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  box-sizing:border-box;
-  overflow:hidden;
-  margin:0 0 40px 50px;
+.hover-button,
+.hover-button2 {
+  width: 140px;
+  height: 50px;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 0 40px 50px;
   top: 70px;
   left: 330px;
 }
 
-.hover-button{
-  border:2px solid #34495e;
+.hover-button {
+  border: 2px solid #34495e;
 }
-.hover-button2{
-  border:2px solid  #34495e;
+.hover-button2 {
+  border: 2px solid #34495e;
 }
 
-@media screen and (max-width:768px) {
-  .hover-button, .hover-button2{
+@media screen and (max-width: 768px) {
+  .hover-button,
+  .hover-button2 {
     left: 0px;
   }
 }
 
-.hover-button .block-button{
+.hover-button .block-button {
   display: block;
-  font-family:arial;
-  font-size:16px;
-  color:#34495e;
-  text-decoration:none;
-  line-height:50px;
-  transition:all .5s ease;
-  z-index:2;
-  position:relative;
+  font-family: arial;
+  font-size: 16px;
+  color: #34495e;
+  text-decoration: none;
+  line-height: 50px;
+  transition: all 0.5s ease;
+  z-index: 2;
+  position: relative;
 }
 
-.hover-button2 .block-button{
+.hover-button2 .block-button {
   display: block;
-  font-family:arial;
-  font-size:16px;
-  color:#34495e;
-  text-decoration:none;
-  line-height:50px;
-  transition:all .5s ease;
-  z-index:2;
-  position:relative;
+  font-family: arial;
+  font-size: 16px;
+  color: #34495e;
+  text-decoration: none;
+  line-height: 50px;
+  transition: all 0.5s ease;
+  z-index: 2;
+  position: relative;
 }
 
-.button-eff,.button-eff2{
-  width:140px;
-  height:50px;
-  position:absolute;
-  transition:all .5s ease;
-  z-index:1;
-  box-sizing:border-box;
+.button-eff,
+.button-eff2 {
+  width: 140px;
+  height: 50px;
+  position: absolute;
+  transition: all 0.5s ease;
+  z-index: 1;
+  box-sizing: border-box;
 }
-.button-eff{
-  border:0px solid #34495e;
-}
-
-.button-eff2{
-  border:0px solid  #e6b422;
+.button-eff {
+  border: 0px solid #34495e;
 }
 
-
-
-.hover-button:hover .button-eff{
-  border:70px solid #34495e;
-}
-.hover-button2:hover{
-  border:2px solid #e6b422;
-}
-.hover-button2:hover .button-eff2{
-  border:70px solid #e6b422;
-}
-.hover-button:hover .block-button{
-  color:#fff;
-}
-.hover-button2:hover .block-button{
-  color:#fff;
+.button-eff2 {
+  border: 0px solid #e6b422;
 }
 
-
+.hover-button:hover .button-eff {
+  border: 70px solid #34495e;
+}
+.hover-button2:hover {
+  border: 2px solid #e6b422;
+}
+.hover-button2:hover .button-eff2 {
+  border: 70px solid #e6b422;
+}
+.hover-button:hover .block-button {
+  color: #fff;
+}
+.hover-button2:hover .block-button {
+  color: #fff;
+}
 
 /*　about-contentのCSS　*/
 
-.about-body{
+.about-body {
   background: url(/images/about_background_image.jpg);
   background-size: cover;
   background-position: 50% 50%;
   height: 100vh;
 }
-.about-title-visual{
+.about-title-visual {
   background-color: white;
 }
 
-.about-title,.about-text{
-  font-family:  "游明朝","Yu Mincho","Tsukushi B Round Gothic","筑紫B丸ゴシック";
+.about-title,
+.about-text {
+  font-family: "游明朝", "Yu Mincho", "Tsukushi B Round Gothic",
+    "筑紫B丸ゴシック";
 }
 .about-title {
   position: relative;
@@ -165,63 +168,69 @@
   left: 0;
   width: 100%;
   height: 7px;
-  background: repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
+  background: repeating-linear-gradient(
+    -45deg,
+    #6ad1c8,
+    #6ad1c8 2px,
+    #fff 2px,
+    #fff 4px
+  );
 }
 
-.card.about-card{
-  border: 0px solid rgba(0,0,0,0.125);
-  box-shadow:0 3px 6px rgba(0, 0, 0, 0.24);
-  background-color: rgba(255,255,255,0.7);
+.card.about-card {
+  border: 0px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-.about-text{
+.about-text {
   font-size: 20px;
   padding-top: 80px;
   pointer-events: none;
 }
 
-.about-headline{
+.about-headline {
   font-size: 40px;
 }
 
-.about-text-normal{
+.about-text-normal {
   font-size: 35px;
 }
 
-.puton-color{
+.puton-color {
   color: #fff;
 }
 
-@media screen and (max-width:768px) {
-  .about-headline{
+@media screen and (max-width: 768px) {
+  .about-headline {
     font-size: 25px;
   }
-  .about-text-normal{
+  .about-text-normal {
     font-size: 18px;
   }
-  .puton-color{
-  color: #000;
+  .puton-color {
+    color: #000;
   }
 }
 
 /*新規登録*/
 
-.signup-body{
-    padding-top: 0px;
-    background: url(/images/registration-form.jpg);
-    background-size: cover;
-    height: 550px;
+.signup-body {
+  padding-top: 0px;
+  background: url(/images/registration-form.jpg);
+  background-size: cover;
+  height: 550px;
 }
 
-.login-body{
-    padding-top: 0px;
-    background: url(/images/login_background_image.jpg);
-    background-size: cover;
-    height: 550px;
-    background-position: bottom;
+.login-body {
+  padding-top: 0px;
+  background: url(/images/login_background_image.jpg);
+  background-size: cover;
+  height: 550px;
+  background-position: bottom;
 }
 
-.card.signup-card{
+.card.signup-card {
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
 }

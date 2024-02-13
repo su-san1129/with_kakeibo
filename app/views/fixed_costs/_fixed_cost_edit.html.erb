@@ -1,7 +1,6 @@
 <button type="button" class="btn btn-outline-dark offset-sm-2 my-2" data-toggle="modal" data-target="#fixed_cost">
   固定費用を登録！
 </button>
-
 <div class="modal fade" id="fixed_cost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -12,22 +11,22 @@
         </button>
       </div>
       <div class="modal-body">
-      	<div class="form-group">
-					<%= form_for @user do |f| %>
-						<%= f.fields_for :fixed_costs do |fixed_cost| %>
-						 	<%= render 'users/fixed_costs_fields', :f => fixed_cost %>
-						<% end %>
-					  <div class='links text-right'>
-					    固定費用を新規追加する場合はこちらをClick ⇒ 
+        <div class="form-group">
+          <%= form_for @user do |f| %>
+            <%= f.fields_for :fixed_costs do |fixed_cost| %>
+              <%= render 'users/fixed_costs_fields', :f => fixed_cost %>
+            <% end %>
+            <div class='links text-right'>
+              固定費用を新規追加する場合はこちらをClick ⇒ 
               <%= link_to_add_association '追加', f, :fixed_costs, partial: "users/fixed_costs_fields", class:"btn btn-primary btn-sm my-1"%>
-					  </div>
-					  <div class="col-sm-12">
-					    <%= f.submit '登録', class:"btn btn-success btn-block my-1" %>
-					  </div>
-					<% end %>
-				</div>
-			</div>
-			<div class="modal-footer">
+            </div>
+            <div class="col-sm-12">
+              <%= f.submit '登録', class:"btn btn-success btn-block my-1" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

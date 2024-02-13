@@ -15,15 +15,15 @@ class VariableCostsController < ApplicationController
   def create
     @variable_cost = VariableCost.new(variable_cost_params)
     if @variable_cost.save
-      redirect_to user_path(current_user.id), notice: '入力が完了しました！'
+      redirect_to user_path(current_user.id), notice: "入力が完了しました！"
     else
       @user = current_user
       @variable_costs = @user.variable_costs.order(created_at: :desc)
       @income = Income.new
       @fixed_costs = @user.fixed_costs
-      @categories = @user.variable_costs.joins(:category).group('categories.category').count
+      @categories = @user.variable_costs.joins(:category).group("categories.category").count
       @category = Category.new
-      render 'users/show', notice: '保存に失敗しました。'
+      render "users/show", notice: "保存に失敗しました。"
     end
   end
 
@@ -36,7 +36,7 @@ class VariableCostsController < ApplicationController
 
   def destroy
     @variable_cost.destroy
-    redirect_to user_path(current_user), notice: '投稿を削除しました。'
+    redirect_to user_path(current_user), notice: "投稿を削除しました。"
   end
 
   private
@@ -57,10 +57,10 @@ class VariableCostsController < ApplicationController
 
   def set_variable_cost
     @variable_cost = VariableCost.find(params[:id])
-     end
+  end
 
   def correct_user
     user = @variable_cost.user
     redirect_to user_path(user) if current_user != user
-    end
+  end
 end

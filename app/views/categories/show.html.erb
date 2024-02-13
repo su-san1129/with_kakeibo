@@ -1,6 +1,6 @@
 <div class="offset-sm-3">
   <div class="col-sm-8">
-  <div class="card px-3 mb-3 pb-3">
+    <div class="card px-3 mb-3 pb-3">
       <div class="col-12">
         <h2 class="variable-user-index pt-3"><%= @category.category %>の一覧</h2>
       </div>
@@ -17,14 +17,14 @@
                       <li class="list-group-item">支払日：<%= category.payment_day.strftime('%Y/%m/%d') %></li>
                     </ul>
                     <%= link_to "削除", variable_cost_path(category.id), method: :delete, class:"offset-9 btn btn-secondary btn-sm my-1" %></p>
-                    <p></p>
-                  </div>
+                  <p></p>
                 </div>
               </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>

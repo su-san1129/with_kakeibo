@@ -4,11 +4,10 @@
     <% if calendar.number_of_weeks == 1 %>
       <span class="calendar-title">Week <%= calendar.week_number %></span>
     <%else%>
-        <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
+      <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
     <%end%>
-        <%= link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view %>
+    <%= link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view %>
   </div>
-
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -17,7 +16,6 @@
         <% end %>
       </tr>
     </thead>
-
     <tbody>
       <% date_range.each_slice(7) do |week| %>
         <tr>

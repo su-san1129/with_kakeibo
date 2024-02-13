@@ -11,14 +11,13 @@
     <%# googleアナリティクスに必要 %>
     <%#= analytics_init if Rails.env.production? %>
   </head>
-
   <body style="background-color: #f6f8fa">
     <%= render 'shared/header' %>
     <% if user_signed_in? %>
       <div class="container-fluid">
         <%= flash[:notice] %>
-    <% else%>
-    <% end %>
+      <% else%>
+      <% end %>
       <%= yield %>
     </div>
   </body>

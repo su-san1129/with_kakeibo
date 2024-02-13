@@ -7,17 +7,17 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(
-      :sign_up, keys: [:name]
+      :sign_up, keys: [:name],
     )
   end
 
   # ログイン後に遷移するページ
   def after_sign_in_path_for(_resource)
     user_path(current_user.id)
-    end
+  end
 
   # ログアウト後に遷移するページ
   def after_sign_out_path_for(_resource)
     root_path
-    end
+  end
 end

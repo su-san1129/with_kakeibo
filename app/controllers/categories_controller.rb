@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  
   def show
     @category = Category.find(params[:id])
     @categories = current_user.variable_costs.where(category_id: params[:id])

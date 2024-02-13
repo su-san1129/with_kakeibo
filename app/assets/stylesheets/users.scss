@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*ユーザーのindexページ*/
-.ranking,.follows {
+.ranking,
+.follows {
   position: relative;
   background: #ffd98a;
   padding: 2px 5px 2px 25px;
@@ -13,8 +14,8 @@
 }
 
 .ranking:before {
-  font-family: 'Font Awesome 5 Free';
-  content: '\f521';
+  font-family: "Font Awesome 5 Free";
+  content: "\f521";
   font-weight: 900;
   display: inline-block;
   line-height: 2rem;
@@ -33,8 +34,8 @@
 }
 
 .follows:before {
-  font-family: 'Font Awesome 5 Free';
-  content: '\f0c0';
+  font-family: "Font Awesome 5 Free";
+  content: "\f0c0";
   font-weight: 900;
   display: inline-block;
   line-height: 2rem;
@@ -54,12 +55,12 @@
 /*indexここまで*/
 
 /*ユーザーのshowページ*/
-.icons{
+.icons {
   font-size: 1.2rem;
   padding-right: 6px;
 }
 
-#variable_cost_payment_day_2i{
+#variable_cost_payment_day_2i {
   width: 70px;
 }
 
@@ -70,43 +71,43 @@
   white-space: nowrap;
 }
 
-.user-background{
+.user-background {
   background-image: url(/images/user_background.png);
   background-size: cover;
 }
 
-.card-chart{
-	position: relative;
+.card-chart {
+  position: relative;
 }
 
-.chart-text{
-	position: absolute;
-	background-color: rgba(255,255,255,0.8);
-	width: 88%;
+.chart-text {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 88%;
   height: 97%;
   top: 0;
   left: 20px;
 }
 
-.chart-text-pdg{
-	padding-top: 100px
+.chart-text-pdg {
+  padding-top: 100px;
 }
 
 .variable-card {
-    transition:box-shadow 0.3s, transform 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .variable-card:hover {
-    box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
-    transform:translate(0, -2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.24);
+  transform: translate(0, -2px);
 }
 
-.variable-card-box{
+.variable-card-box {
   text-decoration: none;
   color: black;
 }
 
-.variable-card-box:hover{
+.variable-card-box:hover {
   text-decoration: none;
   color: black;
 }
@@ -131,10 +132,10 @@
 }
 
 h2.variable-user-index {
-  position: relative;/*相対位置*/
-  padding-left: 1.2em;/*アイコン分のスペース*/
-  line-height: 1.4;/*行高*/
-  color: #7b6459;/*文字色*/
+  position: relative; /*相対位置*/
+  padding-left: 1.2em; /*アイコン分のスペース*/
+  line-height: 1.4; /*行高*/
+  color: #7b6459; /*文字色*/
 }
 
 h2.variable-user-index:before {
@@ -147,7 +148,7 @@ h2.variable-user-index:before {
   color: #ff938b;
 }
 
-.tutorial-text.hide{
+.tutorial-text.hide {
   display: none;
 }
 

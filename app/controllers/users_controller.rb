@@ -17,13 +17,13 @@ class UsersController < ApplicationController
     @fixed_costs = @user.fixed_costs
     @category = Category.new
     @categories = @user.variable_costs
-                   .joins(:category)
-                   .select("variable_costs.id, 
+      .joins(:category)
+      .select("variable_costs.id, 
                             category_id,
                             count(categories.category) as category_count,
                             categories.category as category_name")
-                   .group(:category_id)
-    @chart_data = @user.variable_costs.joins(:category).group('categories.category').sum(:price)
+      .group(:category_id)
+    @chart_data = @user.variable_costs.joins(:category).group("categories.category").sum(:price)
   end
 
   def edit
@@ -58,16 +58,16 @@ class UsersController < ApplicationController
         fixed_cost_time
         fixed_cost_name
         _destroy
-      ]
+      ],
     )
   end
 
   def set_user
     @user = User.find(params[:id])
-     end
+  end
 
   def correct_user
     user = User.find(params[:id])
     redirect_to users_path if current_user != user
-    end
+  end
 end

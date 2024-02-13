@@ -1,11 +1,10 @@
 <% if @variable_cost.errors.any? %>
   <div class="alert alert-danger">
     <p><strong><%= pluralize(@variable_cost.errors.count, "件") %> の未入力があります。</strong></p>
-
     <ul>
-    <% @variable_cost.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @variable_cost.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>

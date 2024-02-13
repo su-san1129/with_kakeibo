@@ -1,29 +1,25 @@
 <div class="card col-sm-8 offset-sm-2">
   <div class="card-body">
     <h2 card-title>編集</h2>
-      <%= form_for @user do |f| %>
-
-        <div class="form-group">
-          <%= f.label :name, "名前" %>
-          <%= f.text_field :name, autofocus: true, class:"form-control"  %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :introduction, "紹介" %>
-          <%= f.text_area :introduction, placeholder: "紹介文は50文字以内です。", class:"form-control" %>
-        </div>
-
-        <div class="custom-file my-2">
-          <%= f.attachment_field :profile_image, class: "custom-file-input", id: "file" %>
-          <label class="custom-file-label" for="file" data-browse="参照">ファイル選択...</label>
-        </div>
-        <div id="img_field" onClick="$('#file').click()" ></div>
-
-        <div class="actions">
-          <%= f.submit "確定", class:"form-control col-sm-6 offset-sm-3 my-3"  %>
-        </div>
-      <% end %>
-      <%= link_to "戻る", user_path(current_user), class: "btn btn-outline-dark offset-sm-11 col-sm-1" %>
+    <%= form_for @user do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, autofocus: true, class:"form-control"  %>
+      </div>
+      <div class="form-group">
+        <%= f.label :introduction, "紹介" %>
+        <%= f.text_area :introduction, placeholder: "紹介文は50文字以内です。", class:"form-control" %>
+      </div>
+      <div class="custom-file my-2">
+        <%= f.attachment_field :profile_image, class: "custom-file-input", id: "file" %>
+        <label class="custom-file-label" for="file" data-browse="参照">ファイル選択...</label>
+      </div>
+      <div id="img_field" onClick="$('#file').click()" ></div>
+      <div class="actions">
+        <%= f.submit "確定", class:"form-control col-sm-6 offset-sm-3 my-3"  %>
+      </div>
+    <% end %>
+    <%= link_to "戻る", user_path(current_user), class: "btn btn-outline-dark offset-sm-11 col-sm-1" %>
   </div>
 </div>
 <% if @categories.present? %>
@@ -40,16 +36,16 @@
             </tr>
           </thead>
           <% @categories.each_with_index do |category, i| %>
-          <tbody>
-            <tr>
-              <td><%= i + 1 %></td>
-              <td><%= category.category %></td>
-              <td><%= link_to "削除", category_path(category), method: :delete,
+            <tbody>
+              <tr>
+                <td><%= i + 1 %></td>
+                <td><%= category.category %></td>
+                <td><%= link_to "削除", category_path(category), method: :delete,
               class: "category-table"%></td>
-            </tr>
-          </tbody>
+              </tr>
+            </tbody>
           <% end %>
         </table>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
